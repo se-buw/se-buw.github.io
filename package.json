@@ -1,0 +1,18 @@
+{
+  "name": "se-buw",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.14.0",
+  "description": "Website for the Software Engineering Group at BUW",
+  "scripts": {
+    "dev": "hugo server --disableFastRender",
+    "build": "hugo --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "@tailwindcss/typography": "^0.5.10"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.13"
+  }
+}

@@ -15,7 +15,10 @@ authors:
 #   - 'Equal contribution'
 
 date: '2025-06-10T00:00:00Z'
-doi: '10.1007/978-3-031-94533-5_5'
+
+hugoblox:
+  ids:
+    doi: '10.1007/978-3-031-94533-5_5'
 
 # Schedule page publish date (NOT publication's date).
 publishDate: '2024-06-10T00:00:00Z'
@@ -39,19 +42,19 @@ tags: []
 # Display this page in the Featured widget?
 featured: true
 
-# Custom links (uncomment lines below)
-# links:
-# - name: Custom Link
-#   url: http://example.org
-
-url_pdf: './publication/fmpals-abz-2025/On-Writing-Alloy-Models-Metrics-and-a-New-Dataset-ABZ25.pdf'
-url_code: 'https://github.com/se-buw/alloy-metrics'
-url_dataset: 'https://zenodo.org/records/15619393'
-url_poster: ''
-url_project: 'https://play.formal-methods.net'
-url_slides: './publication/fmpals-abz-2025/ABZ25-Slides.pdf'
-url_source: 'https://link.springer.com/chapter/10.1007/978-3-031-94533-5_5'
-url_video: ''
+links:
+  - type: pdf
+    url: './publication/fmpals-abz-2025/On-Writing-Alloy-Models-Metrics-and-a-New-Dataset-ABZ25.pdf'
+  - type: code
+    url: 'https://github.com/se-buw/alloy-metrics'
+  - type: dataset
+    url: 'https://zenodo.org/records/15619393'
+  - type: project
+    url: 'https://play.formal-methods.net'
+  - type: slides
+    url: './publication/fmpals-abz-2025/ABZ25-Slides.pdf'
+  - type: source
+    url: 'https://link.springer.com/chapter/10.1007/978-3-031-94533-5_5'
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.

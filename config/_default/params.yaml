@@ -4,79 +4,75 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 # Appearance
-
 appearance:
-  theme_day: minimal
-  theme_night: minimal-dark
-  font: native
-  font_size: L
+  mode: dark
+  color: blue
 
 # SEO
-
 marketing:
   seo:
-    site_type: Organization
-    local_business_type: 'academic'
-    org_name: 'Bauhaus-Universität Weimar - Software Engineering Chair'
-    description: 'The Software Engineering Chair at Bauhaus-Universität Weimar conducts research in the areas of formal methods, software engineering, and software architecture.'
+    site_type: Project
+    local_business_type: ''
+    org_name: ''
+    description: 'A highly-customizable Hugo documentation theme powered by Hugo Blox website builder.'
+    twitter: 'GetResearchDev'
   analytics:
     google_analytics: ''
-    baidu_tongji: ''
     google_tag_manager: ''
     microsoft_clarity: ''
+    baidu_tongji: ''
+    plausible: ''
+    fathom: ''
+    pirsch: ''
   verification:
     google: ''
     baidu: ''
+  powered_by: false
 
 # Site header
-
 header:
   navbar:
     enable: true
-    align: r
-    show_logo: true
-    show_language: false
-    show_day_night: true
+    block: "navbar"
+    align: "right"
+    fixed_to_top: true
+    logo:
+      text: "SE@BUW"
+      filename: "icon.png"
     show_search: true
-    highlight_active_link: false
+    show_theme_chooser: true
 
 # Site footer
-
 footer:
   copyright:
     notice: '© {year} Software Engineering @ Bauhaus-Universität Weimar. All rights reserved.'
-    # license:
-    #   enable: true
-    #   allow_derivatives: false
-    #   share_alike: true
-    #   allow_commercial: false
+    license:
+      enable: false
+      allow_derivatives: false
+      share_alike: true
+      allow_commercial: false
+  powered_by: false
+  show_powered_by: false
 
 # Localization
-
 locale:
   date_format: 'Jan 2, 2006'
   time_format: '3:04 PM'
-  address_format: en-us
 
 # Site features
-
 features:
-  syntax_highlighter:
-    enable: false
-    extra_languages:
-      - bash
-      - latex
   math:
-    enable: true
+    enable: false
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/se-buw/se-buw.github.io'
-    content_dir: content
-    branch: main
-  avatar:
-    gravatar: false
-    shape: circle
+    url: 'https://github.com/HugoBlox/hugo-blox-builder/'
+    content_dir: 'starters/documentation/content'
+    branch: 'main'
+  feedback:
+    responses:
+      positive: 'Glad to hear it! [Any ideas for improvements?](https://github.com/<USERNAME>/<REPO>/issues/new).'
+      negative: 'Sorry to hear that. [Please tell us how we can improve](https://github.com/<USERNAME>/<REPO>/issues/new).'
   comment:
     provider: ''
     giscus:
@@ -84,25 +80,3 @@ features:
       repo_id: ''
       category: ''
       category_id: ''
-  search:
-    provider: wowchemy
-
-  map:
-    provider: 'mapnik'
-    api_key: ''
-    zoom: 15
-
-# Extensions
-
-extensions:
-  # decap_cms:
-  #   branch: main
-  #   local_backend: false
-  academicons:
-    enable: true
-
-# Citation style
-
-publications:
-  date_format: January 2006
-  citation_style: acm

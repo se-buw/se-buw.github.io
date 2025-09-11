@@ -8,7 +8,10 @@ authors:
 date: '2024-06-10T00:00:00Z'
 # Schedule page publish date (NOT publication's date).
 publishDate: '2024-06-10T00:00:00Z'
-doi: '10.1007/978-3-031-71379-8_2'
+
+hugoblox:
+  ids:
+    doi: '10.1007/978-3-031-71379-8_2'
 
 summary: ''
 abstract: 'We have developed an MSc-level module on Formal Methods for Software Engineering with exercises on applying SAT solvers, SMT solvers, Alloy, and nuXmv. In the first iteration of the module, assignments were submitted as documents and archive files. Here, we report on our experience of moving the exercises to GitHub Classroom and automating the feedback process through test cases. The main challenges we encountered were related to supporting free-response tasks and designing test cases that allow for multiple solutions, provide incremental feedback, and do not encode a solution. We present our setup of exercise repositories, test cases, and feedback report generation. We detail our approach in addressing the challenges of migrating from worksheets to GitHub Classroom and report on survey-based student feedback.'
@@ -29,19 +32,15 @@ tags: []
 # Display this page in the Featured widget?
 featured: true
 
-# Custom links (uncomment lines below)
-# links:
-# - name: Custom Link
-#   url: http://example.org
-
-url_pdf: './publication/fmtea-2024/Introducing-GitHub-Classroom-into-a-Formal-Methods-Module-FMTea24.pdf'
-url_code: 'https://github.com/fm4se/exercises'
-url_dataset: ''
-url_poster: ''
-url_project: ''
-url_slides: './publication/fmtea-2024/FMTea24-Slides.pdf'
-url_source: 'https://link.springer.com/chapter/10.1007/978-3-031-71379-8_2'
-url_video: ''
+links:
+  - type: pdf
+    url: './publication/fmtea-2024/Introducing-GitHub-Classroom-into-a-Formal-Methods-Module-FMTea24.pdf'
+  - type: code
+    url: 'https://github.com/fm4se/exercises'
+  - type: slides
+    url: './publication/fmtea-2024/FMTea24-Slides.pdf'
+  - type: source
+    url: 'https://link.springer.com/chapter/10.1007/978-3-031-71379-8_2'
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.

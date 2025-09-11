@@ -32,14 +32,11 @@ tags: []
 
 featured: true
 
-url_pdf: './publication/mldiff-sefm-25/On-the-Comparison-of-Learned-Classifiers.pdf'
-url_code: 'https://github.com/se-buw/MLDiff'
-url_dataset: ''
-url_poster: ''
-url_project: ''
-url_slides: ''
-url_source: ''
-url_video: ''
+links:
+  - type: pdf
+    url: './publication/mldiff-sefm-25/On-the-Comparison-of-Learned-Classifiers.pdf'
+  - type: code
+    url: 'https://github.com/se-buw/MLDiff'
 
 
 image:

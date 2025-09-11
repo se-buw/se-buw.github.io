@@ -31,19 +31,19 @@ tags: []
 # Display this page in the Featured widget?
 featured: true
 
-# Custom links (uncomment lines below)
-# links:
-# - name: Custom Link
-#   url: http://example.org
-
-url_pdf: './publication/fmpsmt-smt-2025/On-Writing-SMT-LIB-Scripts-Metrics-and-a-New-Dataset-SMT25.pdf'
-url_code: 'https://github.com/se-buw/smt-metrics'
-url_dataset: 'https://zenodo.org/records/15488371'
-url_poster: ''
-url_project: 'https://play.formal-methods.net'
-url_slides: './publication/fmpsmt-smt-2025/OnWritingSMTScripts.pdf'
-url_source: 'https://ceur-ws.org/Vol-4008/SMT_paper15.pdf'
-url_video: ''
+links:
+  - type: pdf
+    url: './publication/fmpsmt-smt-2025/On-Writing-SMT-LIB-Scripts-Metrics-and-a-New-Dataset-SMT25.pdf'
+  - type: code
+    url: 'https://github.com/se-buw/smt-metrics'
+  - type: dataset
+    url: 'https://zenodo.org/records/15488371'
+  - type: project
+    url: 'https://play.formal-methods.net'
+  - type: slides
+    url: './publication/fmpsmt-smt-2025/OnWritingSMTScripts.pdf'
+  - type: source
+    url: 'https://ceur-ws.org/Vol-4008/SMT_paper15.pdf'
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
