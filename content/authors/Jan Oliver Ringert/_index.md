@@ -15,13 +15,13 @@ role: Professor of Software Engineering
 # Organizations/Affiliations
 organizations:
   - name: Bauhaus-Universität Weimar
-    url: 'https://www.uni-weimar.de/de/medien/professuren/medieninformatik/software-engineering/people/'
+    # url: 'https://se-buw.de/team/'
 
 # Short bio (displayed in user profile at end of posts)
-bio: TBA
+bio: ""
 
 interests:
-  - TBA
+  - ""
 
 education:
   # courses:

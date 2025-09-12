@@ -23,7 +23,7 @@ sections:
       title: Latest News
       subtitle:
       text:
-      count: 5
+      count: 3
       filters:
         folders:
             - news
@@ -36,7 +36,7 @@ sections:
       order: desc
     design:
       view: card
-      columns: '1'
+      columns: '3'
 
   - block: collection
     content:

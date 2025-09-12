@@ -10,18 +10,18 @@ last_name: Soaibuzzaman
 superuser: false
 
 # Role/position
-role: PhD Candidate | Research Associate
+role: Research Associate
 
 # Organizations/Affiliations
 organizations:
   - name: Bauhaus-Universität Weimar
-    url: 'https://www.uni-weimar.de/de/medien/professuren/medieninformatik/software-engineering/people/'
+    # url: 'https://se-buw.de/team/'
 
 # Short bio (displayed in user profile at end of posts)
-bio: TBA
+bio: ""
 
 interests:
-  - TBA
+  - ""
 
 education:
   # courses:
@@ -51,7 +51,7 @@ social:
   #   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
   - icon: github
     icon_pack: fab
-    link: https://github.com/soaib
+    link: https://github.com/soaibsafi
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv

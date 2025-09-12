@@ -1,27 +1,27 @@
 ---
 # Display name
-title: Soaibuzzaman
+title: Benjamin Burse
 
 # Full Name (for SEO)
-first_name: ''
-last_name: Soaibuzzaman
+first_name: Benjamin
+last_name: Burse
 
 # Is this the primary user of the site?
 superuser: false
 
 # Role/position
-role: PhD Candidate | Research Associate
+role: Research Associate
 
 # Organizations/Affiliations
 organizations:
   - name: Bauhaus-Universität Weimar
-    url: 'https://www.uni-weimar.de/de/medien/professuren/medieninformatik/software-engineering/people/'
+    # url: 'https://www.uni-weimar.de/de/medien/professuren/medieninformatik/software-engineering/people/'
 
 # Short bio (displayed in user profile at end of posts)
-bio: TBA
+bio: 
 
 interests:
-  - TBA
+  - 
 
 education:
   # courses:
@@ -49,9 +49,9 @@ social:
   # - icon: google-scholar
   #   icon_pack: ai
   #   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/soaib
+  # - icon: github
+  #   icon_pack: fab
+  #   link: https://github.com/username
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -59,7 +59,7 @@ social:
 #   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: ''
+email: 'benjamin.burse[at]uni-weimar.de'
 
 # Highlight the author in author lists? (true/false)
 highlight_name: false
