@@ -6,3 +6,7 @@
 .py-32 {
   padding-block: 2rem !important;
 }
+
+.text-center {
+    text-align: left !important;
+}

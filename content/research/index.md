@@ -14,14 +14,12 @@ Techniques applied in our research are design of modeling languages, verificatio
 We are involved in and contributing to some larger projects:
 
 - [The SYNTECH project](https://smlab.cs.tau.ac.il/syntech/) & [Spectra Tools](https://smlab.cs.tau.ac.il/syntech/spectra/)
-- [UKRI Trusted Autonomous Systems - Verifiability Node](https://verifiability.org/)
 
 Most of our software is available on [GitHub](https://github.com/se-buw) and open source. Some of the key projects are:
 
 - [FM Playground](https://github.com/fm4se/fm-playground) (MIT license)
 - [MLDiff](https://github.com/se-buw/MLDiff) (Apache 2.0 license)
-- Alloy Tools (MIT license): 
+- Alloy Analyses (MIT license): 
     - [Semantic Comparison](https://github.com/jringert/alloy-diff)
     - [Abstract Instances](https://github.com/jringert/alloy-absinst)
 - [Spectra Tools](https://github.com/SpectraSynthesizer/) and [Spectra Tutorial](/gse/tutorials/spectra/)
-- Student projects and template projects used in teaching

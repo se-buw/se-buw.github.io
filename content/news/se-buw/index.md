@@ -7,8 +7,6 @@ authors:
 tags:
   - announcement
   - SE
-image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
 ---
 
 Welcome to the official website of the Chair of Software Engineering at Bauhaus-Universität Weimar! We are excited to announce the launch of our new online platform, dedicated to advancing the field of software engineering through cutting-edge research, innovative teaching, and community engagement.
