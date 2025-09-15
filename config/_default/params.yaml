@@ -24,6 +24,7 @@ marketing:
     plausible: ''
     fathom: ''
     pirsch: ''
+    custom_analytics: true
   verification:
     google: ''
     baidu: ''
