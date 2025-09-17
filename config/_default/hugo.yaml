@@ -13,7 +13,7 @@ baseURL: 'https://se-buw.de/'
 cascade:
   # Generative Software Engineering folder options
   - _target:
-      path: /gse/**
+      path: /teaching/gse/**
     editable: false
     show_breadcrumb: true
     # Hide date from Next In Series
@@ -25,7 +25,7 @@ cascade:
       path: /news/**
       kind: page
     pager: true
-    editable: true
+    editable: false
     hide_date: false
     show_date_updated: true
     reading_time: true

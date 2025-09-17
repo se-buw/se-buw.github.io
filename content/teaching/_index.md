@@ -13,6 +13,6 @@ Every semester we offer group projects (12 credits) where you can apply your kno
 We are also supervising BSc and MSc thesis. For a list of topics, please see our thesis topics on [Moodle](https://moodle.uni-weimar.de/course/view.php?id=46874). 
 
 ## Course Materials
-
-- [Generative Software Engineering Tutorials](/gse)
-- [Formal Methods for Software Engineering Course](https://www.formal-methods.net/)
+<!-- 
+- [Generative Software Engineering Tutorials](/teaching/gse)
+- [Formal Methods for Software Engineering Course](https://www.formal-methods.net/) -->
