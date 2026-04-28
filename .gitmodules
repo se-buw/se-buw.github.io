@@ -1,0 +1,3 @@
+[submodule "code-examples/blockly-intro"]
+	path = code-examples/blockly-intro
+	url = https://github.com/jringert/blockly-intro.git
