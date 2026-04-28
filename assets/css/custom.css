@@ -10,3 +10,28 @@
 .text-center {
     text-align: left !important;
 }
+
+/* sub-code shortcode: tighten layout and improve highlighted-line contrast */
+.hb-code-container .hb-code-source-header {
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
+.hb-code-container .highlight,
+.hb-code-container pre,
+.hb-code-container .chroma {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.hb-code-container .chroma .hl,
+.hb-code-container .chroma .line.hl {
+  background-color: rgba(56, 189, 248, 0.22) !important;
+  color: inherit !important;
+}
+
+.dark .hb-code-container .chroma .hl,
+.dark .hb-code-container .chroma .line.hl {
+  background-color: rgba(56, 189, 248, 0.30) !important;
+  color: inherit !important;
+}

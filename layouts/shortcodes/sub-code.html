@@ -1,0 +1,140 @@
+{{- $file := .Get "file" -}}
+{{- $lang := .Get "lang" | default "typescript" -}}
+{{- $showSource := .Get "show_source" | default "true" -}}
+{{- $repoURL := .Get "repo" | default site.Params.features.repository.url -}}
+{{- $repoBranch := .Get "branch" | default site.Params.features.repository.branch | default "main" -}}
+
+{{- /* Read the file from the local file system (submodule) */ -}}
+{{- $content := os.ReadFile $file -}}
+
+{{- /* Normalize line endings to avoid issues with Windows (\r\n) */ -}}
+{{- $content = replace $content "\r\n" "\n" -}}
+{{- $lines := split $content "\n" -}}
+{{- $totalLines := len $lines -}}
+
+{{- /* Get start and end lines, defaulting to the whole file */ -}}
+{{- $start := .Get "start" | default 1 -}}
+{{- $end := .Get "end" | default $totalLines -}}
+{{- $startLine := int $start -}}
+{{- $endLine := int $end -}}
+
+{{- /* Calculate the slice of lines to extract */ -}}
+{{- $startIdx := sub (int $start) 1 -}}
+{{- $length := sub (int $end) $startIdx -}}
+{{- $snippet := delimit (first $length (after $startIdx $lines)) "\n" -}}
+
+{{- /* Build the Chroma syntax highlighting options */ -}}
+{{- $options := slice -}}
+
+{{- /* Configure Line Numbers (default false to match standard fenced code rendering) */ -}}
+{{- $showLineNos := .Get "linenos" | default "false" -}}
+{{- if eq $showLineNos "true" -}}
+  {{- $options = $options | append "linenos=inline" -}}
+  {{- $options = $options | append (printf "linenostart=%v" $start) -}}
+{{- end -}}
+
+{{- /* Highlight specific lines */ -}}
+{{- with .Get "hl_lines" -}}
+  {{- $options = $options | append (printf "hl_lines=%s" .) -}}
+{{- end -}}
+
+{{- $optsString := delimit $options ", " -}}
+{{- $renderedCode := highlight $snippet $lang $optsString -}}
+{{- $renderedCode = replace $renderedCode "<div class=\"highlight\">" "<div class=\"highlight\" style=\"margin:0;\">" -}}
+
+{{- /* Build optional source link to GitHub */ -}}
+{{- $filePath := replace $file "\\" "/" -}}
+{{- $githubBase := strings.TrimSuffix "/" $repoURL -}}
+{{- $sourceURL := "" -}}
+{{- $submoduleRoot := "code-examples/" -}}
+{{- $repoOverride := .Get "repo" | default "" -}}
+
+{{- if and (eq $repoOverride "") (hasPrefix $filePath $submoduleRoot) -}}
+  {{- $matchedSubmodulePath := "" -}}
+  {{- $matchedSubmoduleRepo := "" -}}
+
+  {{- /* Find the best matching submodule from .gitmodules (longest matching path prefix) */ -}}
+  {{- if fileExists ".gitmodules" -}}
+    {{- $lines := split (os.ReadFile ".gitmodules") "\n" -}}
+    {{- $currentPath := "" -}}
+    {{- $currentRepo := "" -}}
+    {{- range $line := $lines -}}
+      {{- $trim := strings.TrimSpace $line -}}
+      {{- if hasPrefix $trim "[submodule " -}}
+        {{- if and (ne $currentPath "") (ne $currentRepo "") -}}
+          {{- $candidatePrefix := printf "%s/" $currentPath -}}
+          {{- if and (hasPrefix $filePath $candidatePrefix) (or (eq $matchedSubmodulePath "") (gt (len $currentPath) (len $matchedSubmodulePath))) -}}
+            {{- $matchedSubmodulePath = $currentPath -}}
+            {{- $matchedSubmoduleRepo = $currentRepo -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $currentPath = "" -}}
+        {{- $currentRepo = "" -}}
+      {{- end -}}
+      {{- if hasPrefix $trim "path = " -}}
+        {{- $currentPath = strings.TrimSpace (strings.TrimPrefix "path = " $trim) -}}
+      {{- end -}}
+      {{- if hasPrefix $trim "url = " -}}
+        {{- $currentRepo = strings.TrimSpace (strings.TrimPrefix "url = " $trim) -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if and (ne $currentPath "") (ne $currentRepo "") -}}
+      {{- $candidatePrefix := printf "%s/" $currentPath -}}
+      {{- if and (hasPrefix $filePath $candidatePrefix) (or (eq $matchedSubmodulePath "") (gt (len $currentPath) (len $matchedSubmodulePath))) -}}
+        {{- $matchedSubmodulePath = $currentPath -}}
+        {{- $matchedSubmoduleRepo = $currentRepo -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if ne $matchedSubmoduleRepo "" -}}
+    {{- $githubBase = strings.TrimSuffix ".git" (strings.TrimSuffix "/" $matchedSubmoduleRepo) -}}
+  {{- end -}}
+
+  {{- $submoduleRev := "" -}}
+  {{- if ne $matchedSubmodulePath "" -}}
+    {{- $submoduleGitDir := printf ".git/modules/%s" $matchedSubmodulePath -}}
+    {{- $headFile := printf "%s/HEAD" $submoduleGitDir -}}
+    {{- if fileExists $headFile -}}
+      {{- $head := strings.TrimSpace (os.ReadFile $headFile) -}}
+      {{- if hasPrefix $head "ref: " -}}
+        {{- $refPath := printf "%s/%s" $submoduleGitDir (strings.TrimPrefix "ref: " $head) -}}
+        {{- if fileExists $refPath -}}
+          {{- $submoduleRev = strings.TrimSpace (os.ReadFile $refPath) -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $submoduleRev = $head -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if and (ne $githubBase "") (ne $submoduleRev "") (ne $matchedSubmodulePath "") -}}
+    {{- $submoduleFilePath := strings.TrimPrefix (printf "%s/" $matchedSubmodulePath) $filePath -}}
+    {{- $sourceURL = printf "%s/blob/%s/%s#L%v" $githubBase $submoduleRev $submoduleFilePath $startLine -}}
+  {{- end -}}
+{{- else if ne $githubBase "" -}}
+  {{- $sourceURL = printf "%s/blob/%s/%s#L%v" $githubBase $repoBranch $filePath $startLine -}}
+{{- end -}}
+
+<div class="hb-code-container overflow-hidden rounded-md border border-gray-700">
+  {{- if eq $showSource "true" -}}
+    <div class="hb-code-source-header flex items-center gap-2 border-b border-gray-700 bg-gray-900 px-3 py-2 text-xs text-gray-100">
+      <span class="font-semibold">Source:</span>
+      {{- if ne $sourceURL "" -}}
+        <a class="font-mono truncate text-white hover:text-gray-200" href="{{ $sourceURL }}" target="_blank" rel="noopener noreferrer">{{ $filePath }}</a>
+      {{- else -}}
+        <span class="font-mono truncate text-white">{{ $filePath }}</span>
+      {{- end -}}
+      <span class="ml-auto shrink-0 font-mono text-gray-300">
+        {{- if eq $startLine $endLine -}}
+          L{{ $startLine }}
+        {{- else -}}
+          L{{ $startLine }}-L{{ $endLine }}
+        {{- end -}}
+      </span>
+    </div>
+  {{- end -}}
+  {{- /* Render the code block */ -}}
+  {{ $renderedCode | safeHTML }}
+</div>

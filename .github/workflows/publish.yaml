@@ -50,6 +50,22 @@ jobs:
           cache: 'npm'
       - name: Install TailwindCSS CLI
         run: npm install
+      - name: Build blockly-intro examples
+        working-directory: code-examples/blockly-intro
+        run: |
+          npm install
+          npm run build
+      - name: Clean and copy blockly-intro dist
+        run: |
+          mkdir -p static/teaching/gse/tutorials/blockly/dist
+          for project in "01.helloBlock" "02.helloBlocks" "03.turtle"; do
+            src="code-examples/blockly-intro/$project/dist"
+            dest="static/teaching/gse/tutorials/blockly/dist/$project"
+            if [ -d "$src" ]; then
+              rm -rf "$dest"
+              cp -r "$src" "$dest"
+            fi
+          done
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
