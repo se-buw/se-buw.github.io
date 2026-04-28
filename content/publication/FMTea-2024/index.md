@@ -25,7 +25,6 @@ publication_short: In *FMTea 2024*
 
 
 # Summary. An optional shortened abstract.
-summary: ''
 
 tags: []
 
