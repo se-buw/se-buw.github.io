@@ -1,7 +1,7 @@
 ---
 title: "EMF - Tutorial"
 bookCollapseSection: true
-weight: 1
+weight: 5
 ---
 
 
