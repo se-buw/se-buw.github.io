@@ -6,6 +6,12 @@ weight: 10
 
 This tutorial describes the [Blockly visual programming language and tools](https://blockly.com/). Blockly is an open-source developer library from Google (recently moved to the Raspberry Pi Foundation). It creates a visual programming interface that uses drag-and-drop blocks.
 
+{{% callout note %}}
+
+The tutoral comes with code examples available as [complete Blockly projects on GitHub](https://github.com/se-buw/blockly-intro). We explain this code in the attached videos. Note that the videos often introduce additional content. It is highly recommended to [WATCH THE VIDEOS](https://www.youtube.com/watch?v=95_8n-FnHyo&list=PLGyeoukah9NbMQqFaMfuGMkAQ-yaaWUD3)!
+
+{{% /callout %}}
+
 
 
 The tutorial is developed as a targeted introduction for a lecture on Generative Software Engineering. We will thus briefly introduce the definition of Blockly blocks and workspaces. We will then quickly look into code generation and how to define block-based code generators (see [HelloBlock](01.hello-block)). 
@@ -18,7 +24,7 @@ See the <a href="./dist/03.turtle/index.html" target="_blank">turtle language ex
 
 ## Video Tutorials
 
-See the [YouTube playlist]() for all videos.
+See the [YouTube playlist](https://www.youtube.com/watch?v=95_8n-FnHyo&list=PLGyeoukah9NbMQqFaMfuGMkAQ-yaaWUD3) for all videos.
 
 ## References
 
