@@ -41,7 +41,44 @@
 
 {{- /* Highlight specific lines */ -}}
 {{- with .Get "hl_lines" -}}
-  {{- $options = $options | append (printf "hl_lines=%s" .) -}}
+  {{- $convertedHlLines := slice -}}
+  {{- range $token := split . " " -}}
+    {{- $token = strings.TrimSpace $token -}}
+    {{- if ne $token "" -}}
+      {{- if strings.Contains $token "-" -}}
+        {{- $parts := split $token "-" -}}
+        {{- if ge (len $parts) 2 -}}
+          {{- $absStart := int (index $parts 0) -}}
+          {{- $absEnd := int (index $parts 1) -}}
+          {{- if gt $absStart $absEnd -}}
+            {{- $tmp := $absStart -}}
+            {{- $absStart = $absEnd -}}
+            {{- $absEnd = $tmp -}}
+          {{- end -}}
+          {{- $clippedStart := cond (lt $absStart $startLine) $startLine $absStart -}}
+          {{- $clippedEnd := cond (gt $absEnd $endLine) $endLine $absEnd -}}
+          {{- if le $clippedStart $clippedEnd -}}
+            {{- $relStart := add (sub $clippedStart $startLine) 1 -}}
+            {{- $relEnd := add (sub $clippedEnd $startLine) 1 -}}
+            {{- if eq $relStart $relEnd -}}
+              {{- $convertedHlLines = $convertedHlLines | append (printf "%d" $relStart) -}}
+            {{- else -}}
+              {{- $convertedHlLines = $convertedHlLines | append (printf "%d-%d" $relStart $relEnd) -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $absLine := int $token -}}
+        {{- if and (ge $absLine $startLine) (le $absLine $endLine) -}}
+          {{- $relLine := add (sub $absLine $startLine) 1 -}}
+          {{- $convertedHlLines = $convertedHlLines | append (printf "%d" $relLine) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if gt (len $convertedHlLines) 0 -}}
+    {{- $options = $options | append (printf "hl_lines=%s" (delimit $convertedHlLines " ")) -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $optsString := delimit $options ", " -}}
