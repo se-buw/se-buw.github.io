@@ -6,13 +6,14 @@
   "description": "Website for the Software Engineering Group at BUW",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify"
+    "build": "hugo --minify && pagefind --site public"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",
     "@tailwindcss/typography": "^0.5.10"
   },
   "devDependencies": {
+    "pagefind": "^1.5.2",
     "tailwindcss": "^4.1.13"
   }
 }
