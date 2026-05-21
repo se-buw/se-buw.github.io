@@ -14,3 +14,4 @@ Currently this site offers the following content:
 - [Blockly - Tutorial](tutorials/blockly/)
 - [Eclipse Modeling Framework (EMF) - Tutorial](tutorials/emf/)
 - [Reactive Synthesis with Spectra - Tutorial](tutorials/spectra/)
+- [Xtext - Tutorial](tutorials/xtext/)
