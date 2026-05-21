@@ -1,3 +1,6 @@
 [submodule "code-examples/blockly-intro"]
 	path = code-examples/blockly-intro
 	url = https://github.com/se-buw/blockly-intro.git
+[submodule "code-examples/xtext-intro"]
+	path = code-examples/xtext-intro
+	url = https://github.com/se-buw/xtext-intro.git
