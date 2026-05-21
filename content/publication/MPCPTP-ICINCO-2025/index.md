@@ -10,7 +10,9 @@ authors:
 
 
 date: '2025-10-20T00:00:00Z'
-doi: '10.5220/0013710400003982'
+hugoblox:
+  ids:
+    doi: '10.5220/0013710400003982'
 
 # Schedule page publish date (NOT publication's date).
 publishDate: '2025-10-20T00:00:00Z'
