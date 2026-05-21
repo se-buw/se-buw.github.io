@@ -4,6 +4,12 @@
 {{- $repoURL := .Get "repo" | default site.Params.features.repository.url -}}
 {{- $repoBranch := .Get "branch" | default site.Params.features.repository.branch | default "main" -}}
 
+{{- /* Map custom language names to the closest available Chroma lexer. */ -}}
+{{- $langAliases := dict "xtext" "antlr" -}}
+{{- with index $langAliases (lower $lang) -}}
+  {{- $lang = . -}}
+{{- end -}}
+
 {{- /* Read the file from the local file system (submodule) */ -}}
 {{- $content := os.ReadFile $file -}}
 
