@@ -1,7 +1,7 @@
 name: Deploy website to GitHub Pages
 
 env:
-  WC_HUGO_VERSION: '0.148.2'
+  WC_HUGO_VERSION: "0.148.2"
 
 on:
   # Trigger the workflow every time you push to the `main` branch
@@ -46,10 +46,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24'
-          cache: 'npm'
+          node-version: "24"
+          cache: "npm"
       - name: Install TailwindCSS CLI
         run: npm install
+
+      ######## BLOCKLY-INTRO #######
       - name: Build blockly-intro examples
         working-directory: code-examples/blockly-intro
         run: |
@@ -64,6 +66,35 @@ jobs:
             if [ -d "$src" ]; then
               rm -rf "$dest"
               cp -r "$src" "$dest"
+            fi
+          done
+
+      ####### XTEXT-INTRO #######
+      - name: Clean and copy xtext-intro simulation
+        run: |
+          src="code-examples/xtext-intro/03.turtle/simulation"
+          dest="static/teaching/gse/tutorials/xtext/03.turtle/simulation"
+
+          mkdir -p "$(dirname "$dest")"
+
+          if [ -d "$src" ]; then
+            rm -rf "$dest"
+            cp -r "$src" "$dest"
+          else
+            echo "Warning: Source directory $src not found."
+          fi
+
+      - name: Minify xtext-intro simulation assets
+        run: |
+          target_dir="static/teaching/gse/tutorials/xtext/03.turtle/simulation"
+
+          if [ -f "$target_dir/index.html" ]; then
+            npx -y html-minifier-terser --collapse-whitespace --remove-comments --minify-css --minify-js -o "$target_dir/index.html" "$target_dir/index.html"
+          fi
+
+          for js_file in "$target_dir"/assets/*.js; do
+            if [ -f "$js_file" ]; then
+              npx -y terser "$js_file" -o "$js_file" --compress --mangle
             fi
           done
       - name: Setup Pages
