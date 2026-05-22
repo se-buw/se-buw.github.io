@@ -51,52 +51,14 @@ jobs:
       - name: Install TailwindCSS CLI
         run: npm install
 
-      ######## BLOCKLY-INTRO #######
-      - name: Build blockly-intro examples
-        working-directory: code-examples/blockly-intro
-        run: |
-          npm install
-          npm run build
-      - name: Clean and copy blockly-intro dist
-        run: |
-          mkdir -p static/teaching/gse/tutorials/blockly/dist
-          for project in "01.helloBlock" "02.helloBlocks" "03.turtle"; do
-            src="code-examples/blockly-intro/$project/dist"
-            dest="static/teaching/gse/tutorials/blockly/dist/$project"
-            if [ -d "$src" ]; then
-              rm -rf "$dest"
-              cp -r "$src" "$dest"
-            fi
-          done
+      # Execute the external build script for blockly
+      - name: Build and copy Blockly examples
+        run: bash scripts/build_blockly_examples.sh
 
-      ####### XTEXT-INTRO #######
-      - name: Clean and copy xtext-intro simulation
-        run: |
-          src="code-examples/xtext-intro/03.turtle/simulation"
-          dest="static/teaching/gse/tutorials/xtext/03.turtle/simulation"
+      # Execute the external build script for xtext
+      - name: Build and copy Xtext examples
+        run: bash scripts/build_xtext_examples.sh
 
-          mkdir -p "$(dirname "$dest")"
-
-          if [ -d "$src" ]; then
-            rm -rf "$dest"
-            cp -r "$src" "$dest"
-          else
-            echo "Warning: Source directory $src not found."
-          fi
-
-      - name: Minify xtext-intro simulation assets
-        run: |
-          target_dir="static/teaching/gse/tutorials/xtext/03.turtle/simulation"
-
-          if [ -f "$target_dir/index.html" ]; then
-            npx -y html-minifier-terser --collapse-whitespace --remove-comments --minify-css --minify-js -o "$target_dir/index.html" "$target_dir/index.html"
-          fi
-
-          for js_file in "$target_dir"/assets/*.js; do
-            if [ -f "$js_file" ]; then
-              npx -y terser "$js_file" -o "$js_file" --compress --mangle
-            fi
-          done
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
