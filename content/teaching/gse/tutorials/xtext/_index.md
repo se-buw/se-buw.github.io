@@ -28,4 +28,4 @@ See the [YouTube playlist](https://www.youtube.com/watch?v=95_8n-FnHyo&list=PLGy
 
 ## References
 
-This tutorial is based on different resources. A main reference documentation is the official collection of [Xtext Tutorial Notes](https://eclipse.dev/Xtext/documentation/index.html). The later languages used in the document are variants of the [Logo language](https://en.wikipedia.org/wiki/Logo_(programming_language)).  
+This tutorial is based on different resources. A main reference documentation is the official collection of [Xtext Tutorial Notes](https://eclipse.dev/Xtext/documentation/index.html). For learning about the langauge elements of Xtend, this [reference of the Xtend expressions](https://eclipse.dev/Xtext/xtend/documentation/203_xtend_expressions.html) is very helpful. The later languages used in the document are variants of the [Logo language](https://en.wikipedia.org/wiki/Logo_(programming_language)).  
