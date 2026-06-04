@@ -36,6 +36,93 @@
   color: inherit !important;
 }
 
+/* Spectra: keep base code-block styling, customize only syntax colors. */
+.hb-code-lang-spectra .highlight {
+  color: inherit !important;
+}
+
+.hb-code-lang-spectra .chroma .err {
+  color: inherit !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.dark .hb-code-lang-spectra .highlight,
+.dark .hb-code-lang-spectra .chroma,
+.dark .hb-code-lang-spectra pre,
+.dark .hb-code-lang-spectra .chroma .err {
+  color: #e5e7eb !important;
+}
+
+.hb-code-lang-spectra .chroma .c,
+.hb-code-lang-spectra .chroma .cm,
+.hb-code-lang-spectra .chroma .c1,
+.hb-code-lang-spectra .chroma .cs,
+.hb-code-lang-spectra .chroma .cp,
+.hb-code-lang-spectra .chroma .ch,
+.hb-code-lang-spectra .chroma .cpf {
+  color: #1f7a1f !important;
+}
+
+.hb-code-lang-spectra .chroma .k,
+.hb-code-lang-spectra .chroma .kd,
+.hb-code-lang-spectra .chroma .kp,
+.hb-code-lang-spectra .chroma .ow {
+  color: #1d4ed8 !important;
+}
+
+.hb-code-lang-spectra .chroma .kn,
+.hb-code-lang-spectra .chroma .kr {
+  color: #1f7a1f !important;
+}
+
+.hb-code-lang-spectra .chroma .kt,
+.hb-code-lang-spectra .chroma .kc {
+  color: #dc2626 !important;
+}
+
+.hb-code-lang-spectra .chroma .nb,
+.hb-code-lang-spectra .chroma .nf,
+.hb-code-lang-spectra .chroma .nv,
+.hb-code-lang-spectra .chroma .vc,
+.hb-code-lang-spectra .chroma .vg,
+.hb-code-lang-spectra .chroma .vi {
+  color: #7e22ce !important;
+}
+
+.hb-code-lang-spectra .spectra-k1 {
+  color: #1d4ed8 !important;
+}
+
+.hb-code-lang-spectra .spectra-k2 {
+  color: #1f7a1f !important;
+}
+
+.hb-code-lang-spectra .spectra-k3 {
+  color: #dc2626 !important;
+}
+
+.hb-code-lang-spectra .spectra-k4 {
+  color: #7e22ce !important;
+}
+
+/* Use brighter keyword colors in dark mode to keep strong contrast. */
+.dark .hb-code-lang-spectra .spectra-k1 {
+  color: #93c5fd !important;
+}
+
+.dark .hb-code-lang-spectra .spectra-k2 {
+  color: #86efac !important;
+}
+
+.dark .hb-code-lang-spectra .spectra-k3 {
+  color: #fca5a5 !important;
+}
+
+.dark .hb-code-lang-spectra .spectra-k4 {
+  color: #c4b5fd !important;
+}
+
 /* Make inline code visually distinct without changing fenced code blocks. */
 .content :not(pre) > code,
 .prose :not(pre) > code {

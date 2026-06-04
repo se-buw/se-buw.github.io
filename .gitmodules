@@ -4,3 +4,6 @@
 [submodule "code-examples/xtext-intro"]
 	path = code-examples/xtext-intro
 	url = https://github.com/se-buw/xtext-intro.git
+[submodule "code-examples/spectra-tutorial"]
+	path = code-examples/spectra-tutorial
+	url = https://github.com/jringert/spectra-tutorial.git

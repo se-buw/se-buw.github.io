@@ -1,11 +1,12 @@
 {{- $file := .Get "file" -}}
 {{- $lang := .Get "lang" | default "typescript" -}}
+{{- $rawLang := lower $lang -}}
 {{- $showSource := .Get "show_source" | default "true" -}}
 {{- $repoURL := .Get "repo" | default site.Params.features.repository.url -}}
 {{- $repoBranch := .Get "branch" | default site.Params.features.repository.branch | default "main" -}}
 
 {{- /* Map custom language names to the closest available Chroma lexer. */ -}}
-{{- $langAliases := dict "xtext" "antlr" -}}
+{{- $langAliases := dict "xtext" "antlr" "spectra" "antlr" -}}
 {{- with index $langAliases (lower $lang) -}}
   {{- $lang = . -}}
 {{- end -}}
@@ -85,6 +86,18 @@
 {{- $renderedCode := highlight $snippet $lang $optsString -}}
 {{- $renderedCode = replace $renderedCode "<div class=\"highlight\">" "<div class=\"highlight\" style=\"margin:0;\">" -}}
 
+{{- /* Spectra fallback: recolor known keywords when fallback lexer emits generic error tokens. */ -}}
+{{- if eq $rawLang "spectra" -}}
+  {{- $k1 := "G|GF|next|H|ONCE|boolean|false|true|spec|alw|alwaysEventually|always|alwEv|ini|initially|implies|forall|exists" -}}
+  {{- $k2 := "out|sys|gar" -}}
+  {{- $k3 := "in|env|asm" -}}
+  {{- $k4 := "counter|overflow|inc|reset|underflow|type|monitor|define|predicate|var|pattern|import" -}}
+  {{- $renderedCode = replaceRE (printf "<span class=\\\"(?:err|nl|k|kd|kp|kr|kn|kt|kc|nb|nf|nv|vc|vg|vi)\\\">(%s)</span>" $k1) "<span class=\"spectra-k1\">$1</span>" $renderedCode -}}
+  {{- $renderedCode = replaceRE (printf "<span class=\\\"(?:err|nl|k|kd|kp|kr|kn|kt|kc|nb|nf|nv|vc|vg|vi)\\\">(%s)</span>" $k2) "<span class=\"spectra-k2\">$1</span>" $renderedCode -}}
+  {{- $renderedCode = replaceRE (printf "<span class=\\\"(?:err|nl|k|kd|kp|kr|kn|kt|kc|nb|nf|nv|vc|vg|vi)\\\">(%s)</span>" $k3) "<span class=\"spectra-k3\">$1</span>" $renderedCode -}}
+  {{- $renderedCode = replaceRE (printf "<span class=\\\"(?:err|nl|k|kd|kp|kr|kn|kt|kc|nb|nf|nv|vc|vg|vi)\\\">(%s)</span>" $k4) "<span class=\"spectra-k4\">$1</span>" $renderedCode -}}
+{{- end -}}
+
 {{- /* Build optional source link to GitHub */ -}}
 {{- $filePath := replace $file "\\" "/" -}}
 {{- $githubBase := strings.TrimSuffix "/" $repoURL -}}
@@ -160,7 +173,8 @@
   {{- $sourceURL = printf "%s/blob/%s/%s#L%v" $githubBase $repoBranch $filePath $startLine -}}
 {{- end -}}
 
-<div class="hb-code-container overflow-hidden rounded-md border border-gray-700">
+{{- $langClass := printf "hb-code-lang-%s" (replaceRE "[^a-z0-9_-]" "-" (lower (.Get "lang" | default "text"))) -}}
+<div class="hb-code-container {{ $langClass }} overflow-hidden rounded-md border border-gray-700">
   {{- if eq $showSource "true" -}}
     <div class="hb-code-source-header flex items-center gap-2 border-b border-gray-700 bg-gray-900 px-3 py-2 text-xs text-gray-100">
       <span class="font-semibold">Source:</span>
