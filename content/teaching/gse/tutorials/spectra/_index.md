@@ -5,14 +5,24 @@ weight: 10
 ---
 
 
-# Reactive Synthesis with Spectra - Tutorial
 This tutorial describes the Spectra language and tools for reactive synthesis. 
 
 {{% callout warning %}}
-This tutorial has been tested with **Eclipse Modeling Tools 2025-03**. Some screen captures in the videos might be from older versions of Eclipse.
+This tutorial has been tested with **Eclipse DSL Tools 2026-03**. Some screen captures in the videos might be from older versions of Eclipse.
 {{% /callout %}}
 
+## Reactive Synthesis with Spectra - Tutorial
 
-## Video Tutorials
+We present a brief introduction to Spectra, a domain-specific language for reactive synthesis. Spectra is designed to specify and synthesize reactive systems, which are systems that continuously interact with their environment.
 
-See the [YouTube playlist](https://www.youtube.com/playlist?list=PLGyeoukah9Nbx1QquUmZGdLulFZIsiRlZ) for all videos.
+{{< youtube id="oHYFRMfK2pg" >}}
+
+See the [YouTube playlist](https://www.youtube.com/watch?v=oHYFRMfK2pg&list=PLGyeoukah9Nbx1QquUmZGdLulFZIsiRlZ&index=1) for all videos.
+
+## Updates to the tutorial in 2025
+
+{{< youtube id="vzr0veelyng" >}}
+
+See the [YouTube playlist](https://www.youtube.com/watch?v=vzr0veelyng&list=PLGyeoukah9Nbx1QquUmZGdLulFZIsiRlZ&index=2) for all videos.
+
+
