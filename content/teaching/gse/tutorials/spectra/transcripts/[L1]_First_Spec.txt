@@ -1,0 +1,309 @@
+Title: [L1] First Spec
+Video ID: IVzfd3zz0jc
+Channel: Jan Oliver Ringert
+---
+[00:00:01,320] Okay, welcome to the first module of
+[00:00:03,480] this
+[00:00:04,599] tutorial. First, we will learn how to
+[00:00:07,440] write our first specification. We will
+[00:00:09,240] look at variable declarations,
+[00:00:11,199] assumptions, and guarantees. And the
+[00:00:13,800] example that we're going to follow is
+[00:00:17,440] these two examples. One is a traffic
+[00:00:19,519] light example, and the other one is a
+[00:00:21,320] grid world with a robot moving between
+[00:00:23,480] grids. But first, we have to see how to
+[00:00:25,960] create our first Spectra project.
+[00:00:29,519] We can uh simply right-click and say new
+[00:00:33,520] other
+[00:00:34,600] and then select under other
+[00:00:37,359] Spectra project. So, this is how we
+[00:00:39,759] would get a whole new Spectra project.
+[00:00:42,359] Let's call it
+[00:00:44,039] uh
+[00:00:45,200] first project
+[00:00:46,759] and finish.
+[00:00:49,840] Now, we have this first project, and it
+[00:00:51,520] already has a first specification.
+[00:00:54,520] The specifications, they always start
+[00:00:56,159] with spec and then the name of the
+[00:00:58,079] specification.
+[00:00:59,920] And then we can have, for example,
+[00:01:01,880] variable declarations and guarantees and
+[00:01:04,120] assumptions.
+[00:01:05,359] So,
+[00:01:07,680] let's create a new specification. We can
+[00:01:09,879] do that in any Spectra project.
+[00:01:13,799] So, let's create one here.
+[00:01:15,560] And now we will create
+[00:01:19,519] a new other just a Spectra file because
+[00:01:21,799] we already have a project.
+[00:01:23,879] And uh we can call it maybe
+[00:01:28,200] traffic L1 cuz that is the one we want
+[00:01:31,879] to um yeah, create. This is our first
+[00:01:35,959] example.
+[00:01:37,879] So, here we're going to model this
+[00:01:40,879] traffic light system. There are
+[00:01:43,400] basically two lanes, A and B.
+[00:01:47,840] And we have two traffic lights. So,
+[00:01:50,079] let's say we want to model two
+[00:01:52,519] variables. One that tells us whether the
+[00:01:55,560] traffic light is green on this lane A
+[00:01:59,159] and the other one that tells us whether
+[00:02:00,519] it's green on the lane B.
+[00:02:02,760] So, these are variables that we would
+[00:02:05,560] usually say are system controlled
+[00:02:07,799] because we want the system to control
+[00:02:10,080] the traffic light and then there's also
+[00:02:12,039] the environment. The environment in this
+[00:02:13,719] example would control the cars that are
+[00:02:15,959] driving here.
+[00:02:17,360] Let's delete these guarantees first, the
+[00:02:19,520] the simple one. And now let's say we
+[00:02:22,840] wanted a system controlled variable.
+[00:02:24,719] This is the one where we want to
+[00:02:25,959] synthesize the control for. So, we will
+[00:02:29,280] start it with sys for system, then the
+[00:02:33,280] type.
+[00:02:35,080] The data type here is simply Boolean and
+[00:02:37,599] then we can say green A. This is the
+[00:02:40,719] variable that tells us that on the A
+[00:02:43,560] road um
+[00:02:45,639] the traffic light is green and then we
+[00:02:47,280] have the one that tells us on the B road
+[00:02:49,080] whether it's green. Now,
+[00:02:51,879] this is for simple variables. We also
+[00:02:54,240] can have environment variables.
+[00:02:56,800] These are the ones that the system
+[00:02:58,599] usually senses or something that happens
+[00:03:01,159] outside the system that the system is
+[00:03:03,080] then notified of. So, here we would say
+[00:03:06,840] maybe an environment variable also of
+[00:03:09,319] type Boolean can tell us whether there
+[00:03:11,879] is a car in
+[00:03:14,759] the street A
+[00:03:17,759] or in lane A.
+[00:03:19,080] And then we might also have one for lane
+[00:03:21,000] B.
+[00:03:23,039] And then of course we want to maybe
+[00:03:24,959] relate these
+[00:03:27,519] inputs, these environment controlled
+[00:03:29,159] variables, with the outputs, these
+[00:03:31,360] system controlled variables, because
+[00:03:33,159] well, clearly if it's a traffic light
+[00:03:35,199] there's probably some relation between
+[00:03:36,840] whether there are cars and um
+[00:03:39,639] whether the light will be green. Now,
+[00:03:41,080] the obligation of the system we usually
+[00:03:44,080] describe it in or we always describe it
+[00:03:46,439] in guarantees.
+[00:03:47,879] And in Spectra guarantees we would have
+[00:03:50,680] the keyword gar and then the guarantees
+[00:03:53,639] can have different types depending on
+[00:03:56,680] their
+[00:03:57,759] temporal meaning. So, we could have
+[00:04:00,599] guarantees that only have to hold in the
+[00:04:03,280] initial state. So, this would be
+[00:04:05,280] guarantee any
+[00:04:07,280] Um and then let's say maybe we want to
+[00:04:10,479] have
+[00:04:12,400] green A
+[00:04:13,879] uh
+[00:04:16,639] We want to have both turned off.
+[00:04:19,238] Both lights not green, so not
+[00:04:21,879] green A and not
+[00:04:25,199] green B in the initial state.
+[00:04:27,639] Then later, we might want other
+[00:04:29,519] guarantees. So, for example, we would
+[00:04:31,480] like the guarantee that always So, this
+[00:04:35,040] would be now a safety guarantee,
+[00:04:37,160] something that has to hold in every
+[00:04:38,759] state whatsoever.
+[00:04:40,839] Always
+[00:04:42,519] um
+[00:04:44,720] We basically don't want
+[00:04:48,199] green A and green B to happen, to occur
+[00:04:52,079] together. The The light should never be
+[00:04:54,279] green at the same time.
+[00:04:55,879] So, we negate that A and B are both
+[00:04:59,839] green at the same time.
+[00:05:02,240] Um then, we might also want some
+[00:05:05,519] some further guarantees that there's
+[00:05:07,120] actually something happening in the
+[00:05:08,959] system, some liveness guarantees. So,
+[00:05:11,759] this guarantee could be
+[00:05:13,918] uh always eventually we want the
+[00:05:19,800] maybe
+[00:05:21,839] green A to be true. So,
+[00:05:25,240] after some finite amount of time, always
+[00:05:28,199] we need to
+[00:05:29,199] We want to see that the left lane has a
+[00:05:34,000] green light.
+[00:05:35,319] So, these are the three kinds of
+[00:05:38,879] temporal
+[00:05:40,439] operators that we have in Spectra. The
+[00:05:43,000] any, the always, and the always
+[00:05:45,199] eventually, and they always have to
+[00:05:48,639] start a guarantee or assumption. So,
+[00:05:53,120] what we wrote here for guarantees, we
+[00:05:54,759] can do the same for assumptions, and
+[00:05:57,199] then it would be ASM for assumption. And
+[00:06:00,360] now, let's see what is a good
+[00:06:02,079] assumption. I mean, we we can do very
+[00:06:03,600] very similar assumptions here that
+[00:06:05,680] initially there is no car, or maybe that
+[00:06:08,519] initially there is a car. So, let let's
+[00:06:10,720] say maybe initially
+[00:06:13,360] there is a car
+[00:06:16,560] at A and not a car at B. So, this is,
+[00:06:21,600] yeah, quite arbitrary and maybe not a
+[00:06:23,680] good assumption, but this is how these
+[00:06:26,279] assumptions would work.
+[00:06:29,319] And we can also have, similarly as we
+[00:06:32,360] could have for the guarantees, the three
+[00:06:35,199] temporal operators. We can have those
+[00:06:37,199] same operators for assumptions, and then
+[00:06:39,439] always write also write safety
+[00:06:41,240] assumptions, and also write
+[00:06:43,240] um
+[00:06:45,079] these liveness assumptions.
+[00:06:48,360] Okay. So, this would be our first
+[00:06:50,319] example of the traffic light, and we saw
+[00:06:52,519] that all the data types that were just
+[00:06:55,079] boolean, so we can do a bit better. In
+[00:06:58,279] Spectra, we also have other kinds of
+[00:07:00,240] data types. Let's create a second
+[00:07:03,600] specification,
+[00:07:05,439] um
+[00:07:07,480] in this same project. So, this would we
+[00:07:09,800] would call it the
+[00:07:12,800] grid L1.
+[00:07:15,240] And here, we want to model this this
+[00:07:18,079] grid world of the robot.
+[00:07:20,879] So,
+[00:07:21,918] um yeah, well, here it's a simple 5 by 5
+[00:07:25,240] grid, so with booleans
+[00:07:27,918] doesn't make much sense. We could, of
+[00:07:29,199] course, have one boolean for every cell
+[00:07:30,879] that
+[00:07:31,959] probably wouldn't be a good idea,
+[00:07:33,399] because the robot can only we we want to
+[00:07:35,759] model a robot, and we want to model a
+[00:07:37,759] robot position. So, let's say we have a
+[00:07:40,800] um system variable,
+[00:07:44,199] or maybe an environment variable that
+[00:07:46,480] environment will tell us where the robot
+[00:07:48,560] currently is.
+[00:07:50,000] And
+[00:07:52,600] now we want to represent the
+[00:07:55,800] position in X and Y coordinates. So, we
+[00:07:58,720] would need an integer that goes from 0
+[00:08:02,879] to
+[00:08:04,240] 4.
+[00:08:06,240] So, then we have these five cells and we
+[00:08:07,839] can call it
+[00:08:10,959] Yeah, maybe just robot X.
+[00:08:13,879] And then we can have
+[00:08:18,560] a similar one for robot Y.
+[00:08:22,959] And then we might have also some
+[00:08:26,480] system where that wants to move the
+[00:08:29,519] robot. So, we would then have a system
+[00:08:32,759] output variable. And now this one can
+[00:08:36,279] have
+[00:08:38,240] maybe
+[00:08:39,679] an enumeration data type. So, the robot
+[00:08:42,879] could
+[00:08:44,159] maybe move
+[00:08:45,399] up or down or left or right.
+[00:08:50,399] Or it could just uh
+[00:08:52,799] stay in place.
+[00:08:54,480] And this is the
+[00:08:56,480] variable system variable move. So, here
+[00:08:58,919] we see bounded integers and also
+[00:09:01,759] enumerations. And then the way that we
+[00:09:03,720] would use these
+[00:09:05,080] is that
+[00:09:06,679] maybe in in in assumption in initial
+[00:09:09,480] assumption, we say that the
+[00:09:11,960] robot X
+[00:09:14,039] is
+[00:09:15,399] 0
+[00:09:16,919] and also the robot Y is 0. So, yeah,
+[00:09:22,799] this would mean something like that the
+[00:09:24,159] robot is initially in this
+[00:09:26,919] corner here. And then we can also, of
+[00:09:29,480] course, relate them. We might want to
+[00:09:31,679] have
+[00:09:33,240] an assumption
+[00:09:37,080] that says
+[00:09:38,840] always when
+[00:09:42,399] the robot uh says it wants to move up.
+[00:09:48,600] Um this would be
+[00:09:51,639] move equals up.
+[00:09:55,879] This would imply, so we can write
+[00:09:58,840] implies like this or we can also write
+[00:10:02,559] implies if we want to type a lot.
+[00:10:05,120] Um
+[00:10:06,519] move up. This would mean Well, if we say
+[00:10:08,759] top left is 0 0, then moving up would
+[00:10:12,559] basically uh decrease
+[00:10:16,120] the Y coordinate. So, this means the
+[00:10:19,279] next Y coordinate
+[00:10:23,320] would equal
+[00:10:25,480] robot
+[00:10:27,799] Y um
+[00:10:29,759] minus one. So, every variable that is in
+[00:10:33,279] the context of next
+[00:10:36,120] would be
+[00:10:39,399] in the next state already.
+[00:10:42,399] So, we basically say here that the
+[00:10:44,360] variable in the next state is Y reduced
+[00:10:47,200] by is the current state variable reduced
+[00:10:49,279] by one. And this next operator, this can
+[00:10:52,440] be used in the safety
+[00:10:56,159] assumptions and safety guarantees.
+[00:10:59,559] It is important that we cannot talk
+[00:11:03,120] about
+[00:11:04,679] uh the next value of a system variable
+[00:11:07,759] in a in an assumption because
+[00:11:12,080] this would be this would mean the
+[00:11:14,120] environment would have to look into the
+[00:11:16,000] future and that's not possible. So, here
+[00:11:19,360] we can but here we are only talking
+[00:11:21,159] about the next environment variable and
+[00:11:23,080] well, the environment of course has
+[00:11:24,440] control over its variables, so this is
+[00:11:26,399] fine.
+[00:11:27,600] So, this would be an update of
+[00:11:30,839] the
+[00:11:33,600] robot coordinates based on the move that
+[00:11:37,440] the system wants to do.
+[00:11:40,799] Um
+[00:11:42,759] and we will probably need very similar
+[00:11:44,320] ones for the other kind of moves to make
+[00:11:46,600] sure the robot moves
+[00:11:48,200] correctly. To have our um yeah,
+[00:11:51,399] assumptions that the robot, when it
+[00:11:53,519] moves, that the environment will make
+[00:11:55,879] sure that the robot ends up in the right
+[00:11:57,799] grid cell.
+[00:12:02,679] Okay, this is a very simple um overview,
+[00:12:06,360] very short overview of the different
+[00:12:08,600] kinds of
+[00:12:10,120] variable types and how to use these
+[00:12:12,480] variables, how to use the different
+[00:12:14,679] types of Boolean, bounded integers, and
+[00:12:17,080] enumerations.
+[00:12:18,440] And now there is a task for you. So,
+[00:12:21,360] please go ahead and extend the
+[00:12:23,200] specification grid L1 that we just
+[00:12:25,759] created with the following guarantee,
+[00:12:28,639] which says when the robot is at the end
+[00:12:30,559] of the grid,
+[00:12:31,759] it does not try to move outside.
+[00:12:36,480] And then
+[00:12:37,919] also in the next step, try to extend the
+[00:12:40,879] specification of the traffic light with
+[00:12:43,360] the following assumption that always
+[00:12:45,440] eventually traffic will arrive at each
+[00:12:47,759] light.

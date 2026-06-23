@@ -1,0 +1,168 @@
+Title: [A2] Unrealizability
+Video ID: p9qB3NtsS48
+Channel: Jan Oliver Ringert
+---
+[00:00:00,399] so now we're going to have a look at
+[00:00:01,919] unrealizability of specifications and
+[00:00:04,400] that is the case when there is no way to
+[00:00:06,960] find an implementation
+[00:00:08,400] for the specification so if there would
+[00:00:11,679] be
+[00:00:12,798] any kind of implementation for the
+[00:00:14,718] specification then the synthesizer would
+[00:00:16,559] find it but
+[00:00:17,359] in some cases there is no such
+[00:00:19,920] implementation
+[00:00:21,679] and we're going to look at how we can
+[00:00:23,359] check realizability we already did that
+[00:00:26,000] and then also how to compute an
+[00:00:27,920] unrealizable core and counter strategies
+[00:00:30,480] so here we have some unrealizable
+[00:00:33,039] specifications
+[00:00:34,640] there is this traffic
+[00:00:38,479] a1b that we had earlier and
+[00:00:42,878] it was unrealizable so let's have a look
+[00:00:45,920] check realizability tells us it's
+[00:00:47,759] unrealizable
+[00:00:49,200] now what do we do to
+[00:00:51,679] [Music]
+[00:00:53,039] analyze this we see unrealizability well
+[00:00:55,920] it can't depend on variables it must
+[00:00:58,079] depend on
+[00:00:59,198] some assumptions and guarantees
+[00:01:02,479] and most likely or in in all cases it is
+[00:01:06,719] a problem of satisfying the guarantees
+[00:01:09,680] so
+[00:01:10,959] the either the guarantees are
+[00:01:13,118] contradicting each other
+[00:01:14,478] or the assumptions are not enough
+[00:01:17,519] to let the system
+[00:01:21,040] satisfy the guarantees so the first
+[00:01:24,159] thing that we can do
+[00:01:25,280] is we can compute a core which is a
+[00:01:29,438] minimal subset of the guarantees
+[00:01:33,599] that is together already unrealizable so
+[00:01:37,599] i mean here we have four
+[00:01:40,879] five guarantees so let's see if we can
+[00:01:42,959] minimize that
+[00:01:45,040] we can go to spectre add-ons course and
+[00:01:47,920] then say
+[00:01:48,640] find an unrealizable core
+[00:01:51,920] and this finds a small subset of
+[00:01:55,200] only two guarantees and it tells us that
+[00:01:57,519] these two guarantees
+[00:01:59,359] together are already unrealizable
+[00:02:03,200] so let's have a look and we saw that
+[00:02:06,159] this was
+[00:02:07,599] here this is the safety guarantee that
+[00:02:10,560] says that the two traffic lights are
+[00:02:12,400] never green together
+[00:02:14,400] and then here is a liveness guarantee
+[00:02:16,400] that says that
+[00:02:17,680] always eventually the two traffic lights
+[00:02:19,439] are green together so
+[00:02:20,878] well there's a clear problem here
+[00:02:24,719] we can't even satisfy these two together
+[00:02:28,560] so
+[00:02:29,439] this is now well these two
+[00:02:32,800] expressions here so the um
+[00:02:36,159] this we could already find out by just
+[00:02:38,560] looking at whether it can be satisfied
+[00:02:40,800] together that
+[00:02:44,719] green a and green b are true and not
+[00:02:47,439] green a and green b
+[00:02:48,719] are true so we clearly see that can't be
+[00:02:51,439] satisfied together
+[00:02:53,280] so this was a simple case
+[00:02:57,759] now let's look at a little bit more
+[00:02:59,919] challenging case
+[00:03:01,519] let's see here if we again check
+[00:03:04,400] realizability
+[00:03:05,919] we see it's unrealizable now we even
+[00:03:08,959] have
+[00:03:09,598] six guarantees now let's see
+[00:03:12,800] if we can find a core
+[00:03:16,800] find someone realizable core oh it is
+[00:03:20,239] this core has a single guarantee
+[00:03:23,360] well that's not very helpful
+[00:03:26,959] so um this means that this guarantee
+[00:03:30,080] doesn't conflict with
+[00:03:31,598] any other guarantee it means that the
+[00:03:34,719] assumptions are not strong enough
+[00:03:36,479] to realize this guarantee
+[00:03:39,840] so now if we want to
+[00:03:42,959] see how so the if the assumptions are
+[00:03:45,759] not strong enough this means there is
+[00:03:47,680] some environment that will prevent us
+[00:03:50,719] from realizing these guarantees so
+[00:03:54,400] we can ask spectra tools to compute
+[00:03:58,400] such an environment for us and
+[00:04:01,598] this environment would then be a
+[00:04:04,878] counter strategy that will prevent any
+[00:04:08,080] kind of strategy that we could
+[00:04:10,000] think of to realize this specification
+[00:04:11,919] so let's have a look
+[00:04:13,598] we can go to spectra and then synthesize
+[00:04:16,319] a concrete counter strategy
+[00:04:19,199] and here we see what the environment can
+[00:04:21,918] do
+[00:04:22,399] to prevent us from realizing these
+[00:04:24,399] guarantees so the
+[00:04:26,639] one of the guarantees that we can't
+[00:04:28,319] realize with this that we have a
+[00:04:30,319] car at a um
+[00:04:34,720] and also we have a green light at lane a
+[00:04:38,560] so let's have a look what's going on so
+[00:04:40,839] initially there is a car in a
+[00:04:44,000] and we go to state s0
+[00:04:48,319] when we are in state s0
+[00:04:51,918] there's no longer a car for a
+[00:04:55,120] um we go to s1 and
+[00:04:58,478] in s1 there's also no longer a car for a
+[00:05:01,680] so basically what happens is that
+[00:05:04,319] the
+[00:05:07,439] assumption this liveness assumption here
+[00:05:10,720] allows the environment to always go for
+[00:05:13,279] the alternative that there is only a car
+[00:05:15,199] for b
+[00:05:15,680] so there is nothing that says that there
+[00:05:18,720] will
+[00:05:19,519] always eventually be a car for a so that
+[00:05:22,639] is why
+[00:05:24,160] the environment could simply only send
+[00:05:26,639] cars on
+[00:05:27,519] b this would satisfy this assumption
+[00:05:30,959] um and we have no way of realizing this
+[00:05:34,000] guarantee that we can have a car
+[00:05:36,160] passing on a because there's no car
+[00:05:38,160] coming
+[00:05:41,600] okay so these are the two main
+[00:05:45,038] main ways of understanding
+[00:05:47,079] unrealizability
+[00:05:48,478] first we can of course always check
+[00:05:50,839] realizability
+[00:05:52,000] and then we can compute either a counter
+[00:05:54,959] strategy or we can go to the add-ons and
+[00:05:57,439] compute
+[00:05:59,120] one unrealizable core and
+[00:06:05,279] yeah there are different options here as
+[00:06:07,839] well
+[00:06:08,720] um all unrealizable cores and further
+[00:06:11,519] options also
+[00:06:13,038] now let's have a look at there are three
+[00:06:15,360] more
+[00:06:16,478] specifications here and the task would
+[00:06:20,160] be to analyze these
+[00:06:21,439] specifications and to understand the
+[00:06:23,519] reasons for unrealizability
+[00:06:25,918] using either the core or the counter
+[00:06:29,199] strategy
+[00:06:29,918] so both of them have their rights so for
+[00:06:32,160] example if the core
+[00:06:33,199] is just a single guarantee then probably
+[00:06:35,600] we need a counter strategy if we
+[00:06:37,839] still don't understand the reason or if
+[00:06:41,120] the core
+[00:06:41,680] is very large this could also happen
+[00:06:43,600] that it might make sense to have a look
+[00:06:45,279] at the count strategy

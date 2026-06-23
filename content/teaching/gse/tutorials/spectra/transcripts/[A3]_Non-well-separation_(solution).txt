@@ -1,0 +1,92 @@
+Title: [A3] Non-well-separation (solution)
+Video ID: m_QZGoaF1wY
+Channel: Jan Oliver Ringert
+---
+[00:00:00,320] so the task was to analyze the traffic
+[00:00:02,720] a3b
+[00:00:03,439] spectra file for non-weld separation and
+[00:00:06,318] identify the reasons of non-wall
+[00:00:07,759] separation
+[00:00:08,638] if there are any
+[00:00:13,679] and this is the specification so we have
+[00:00:17,839] again the the traffic light with
+[00:00:21,600] two lanes where of cars two traffic
+[00:00:24,320] lights
+[00:00:25,199] now we have an emergency mode that can
+[00:00:27,118] be enabled by the system and we have
+[00:00:30,480] some assumptions that
+[00:00:31,760] a car if the car is on lane a
+[00:00:35,280] and a is not green then the car stays on
+[00:00:37,920] lane a
+[00:00:38,719] if a car is on car on lane b and
+[00:00:42,079] b is not green then the car remains
+[00:00:44,558] there
+[00:00:45,600] we have the emergency mode so if the
+[00:00:47,759] system decides that there is an
+[00:00:49,600] emergency
+[00:00:50,719] then in the next step the
+[00:00:54,320] cars will have the same value as before
+[00:00:57,280] so if there was no car
+[00:00:58,640] then there'll still be no car if there
+[00:01:00,320] was a car it will remain there
+[00:01:03,520] and then we have
+[00:01:06,640] another assumption that always
+[00:01:08,000] eventually we will have
+[00:01:10,719] two cars waiting or two cars present
+[00:01:14,239] at the intersection and we have some
+[00:01:18,000] guarantee that the lights are never
+[00:01:21,118] green
+[00:01:22,000] at the same time so let's see if this is
+[00:01:25,280] realizable
+[00:01:27,280] it is realizable and there's not much of
+[00:01:30,078] a challenge
+[00:01:30,879] uh there are many many ways to realize
+[00:01:32,640] this because the only guarantee
+[00:01:34,478] is really to not have the the lights
+[00:01:36,400] turn on
+[00:01:37,519] green at the same time but now let's see
+[00:01:40,078] if this is also well separated
+[00:01:42,478] so well separation um the diagnosis
+[00:01:46,879] it is not well separated
+[00:01:50,078] that is not good so now we should try to
+[00:01:52,159] understand why
+[00:01:53,438] and it says also that the environment
+[00:01:55,359] can violate some justice assumptions so
+[00:01:57,920] well there's only one justice assumption
+[00:01:59,519] here
+[00:02:00,718] from some reachable state so let's try
+[00:02:04,000] to find a
+[00:02:05,680] core to see which assumptions play a
+[00:02:08,560] role in the
+[00:02:09,679] non-weld separation and it's these two
+[00:02:13,039] assumptions here
+[00:02:14,318] it's the emergency one and
+[00:02:17,598] the assumption that always eventually we
+[00:02:20,318] will have two cars
+[00:02:21,520] so yeah simply what can happen
+[00:02:25,280] is that if there are
+[00:02:30,000] not two cars present at any point in
+[00:02:32,800] time then the system could enable the
+[00:02:34,479] emergency node the emergency mode
+[00:02:37,439] and then the cars cannot
+[00:02:41,120] appear so if if the cars are not there
+[00:02:45,120] one at the time that emergency mode is
+[00:02:48,318] enabled
+[00:02:49,280] then there's no way for the environment
+[00:02:51,439] to satisfy this assumption
+[00:02:53,280] that always eventually two cars will be
+[00:02:55,280] there
+[00:02:57,680] and again there would be ways to to fix
+[00:03:00,639] this maybe this assumption is not the
+[00:03:02,318] right one
+[00:03:04,080] maybe we only want to make sure that
+[00:03:05,598] cars do not disappear
+[00:03:07,840] instead of saying that the value is
+[00:03:10,719] exactly the same here
+[00:03:13,840] or maybe we want to have
+[00:03:17,439] another guarantee that emergency is only
+[00:03:20,639] enabled and then immediately disabled or
+[00:03:22,959] something so there are ways again
+[00:03:24,878] by either weakening the assumption or um
+[00:03:29,360] by by adding maybe some specific
+[00:03:32,400] guarantees to fix this

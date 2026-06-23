@@ -1,0 +1,21 @@
+Title: [L3] Advanced language constructs (solution)
+Video ID: r_0Vgclidd4
+Channel: Jan Oliver Ringert
+---
+[00:00:00,240] so let's have a look at the solution of
+[00:00:02,080] this the
+[00:00:03,279] assumption that car a is
+[00:00:06,480] always eventually followed by car b
+[00:00:09,919] in our traffic so um
+[00:00:13,199] here we would add an
+[00:00:16,879] maybe let's edit at the bottom an
+[00:00:18,960] assumption
+[00:00:20,320] and the response pattern was
+[00:00:23,439] this and we simply want to say that
+[00:00:27,439] a is followed by b so whenever a happens
+[00:00:31,359] then
+[00:00:31,760] eventually b has to happen and
+[00:00:35,759] yep this is the this is already the the
+[00:00:38,878] solution
+[00:00:39,600] and the specification is still
+[00:00:42,640] realizable like this

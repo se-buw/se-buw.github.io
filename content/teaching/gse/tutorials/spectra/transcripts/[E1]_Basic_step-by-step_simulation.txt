@@ -1,0 +1,403 @@
+Title: [E1] Basic step-by-step simulation
+Video ID: P5040AeVFMM
+Channel: Jan Oliver Ringert
+---
+[00:00:00,560] So, welcome to this module on basic
+[00:00:02,560] step-by-step simulation of controllers.
+[00:00:05,080] And what we're going to look at now is
+[00:00:07,919] how we can explore the controllers that
+[00:00:10,240] we have synthesized. So, we have already
+[00:00:13,599] used this specification of the traffic
+[00:00:15,560] light. I think this was in um
+[00:00:18,559] one or or two. And we already did this
+[00:00:22,640] synthesize a concrete controller, and
+[00:00:24,920] then we have this kind of transition
+[00:00:26,920] system here.
+[00:00:28,280] What happens when controllers or when
+[00:00:30,800] specifications get larger is that also
+[00:00:32,759] controllers get larger. So, um
+[00:00:35,840] maybe this one here, if we want to
+[00:00:37,520] synthesize a concrete controller,
+[00:00:40,359] um it gets a bit more complicated to
+[00:00:43,280] follow
+[00:00:44,960] the the behavior that is synthesized in
+[00:00:47,200] this controller. And um
+[00:00:50,039] easily the specifications that we're
+[00:00:51,840] dealing with, they they can have
+[00:00:53,399] thousands of states. So, then even
+[00:00:54,960] printing the transition system will no
+[00:00:57,240] longer work. So, in that case, what we
+[00:00:59,719] can do is we can synthesize a symbolic
+[00:01:01,679] controller.
+[00:01:02,840] Uh and that is also how we execute the
+[00:01:06,200] controllers in in most of the cases when
+[00:01:08,000] we run them on robots or when we run
+[00:01:10,000] them in our own programs.
+[00:01:11,719] And the symbolic controller, we can
+[00:01:13,560] simply say uh Spectra synthesize a
+[00:01:16,040] static symbolic controller. We will have
+[00:01:18,560] a look what the just-in-time
+[00:01:21,000] uh symbolic controller does later, but
+[00:01:22,959] right now, what we need to do is
+[00:01:24,359] synthesize static symbolic controllers.
+[00:01:26,640] So, we can synthesize a static symbolic
+[00:01:28,400] controller.
+[00:01:29,480] Uh we will see that it says controller
+[00:01:31,760] is saved to disk. It's quite quick. If
+[00:01:34,879] we refresh the project, we see that
+[00:01:37,120] there are um
+[00:01:39,400] three files in the out folder, and this
+[00:01:41,840] is a representation of the symbolic
+[00:01:43,200] controller. There's really it's a it's
+[00:01:45,560] an internal BDD representation. So,
+[00:01:47,439] there's not really much that we can do
+[00:01:49,719] with this. It's uh some numbers and
+[00:01:52,120] nodes of the internal representation.
+[00:01:55,719] So, there's not really any way for us to
+[00:01:57,719] inspect this by looking at the
+[00:02:01,400] the transition system because the
+[00:02:02,640] transition system is a formula
+[00:02:04,319] represented as a BDD. So, what we need
+[00:02:06,799] to do is
+[00:02:08,280] uh we we we kind of want to still
+[00:02:10,679] explore this controller because we want
+[00:02:12,959] to see whether it makes sense or we want
+[00:02:14,719] to see what happens when the environment
+[00:02:16,719] gives certain inputs. So, what we can do
+[00:02:19,840] is there is an add-on in Spectra, which
+[00:02:22,039] is the rich controller walker,
+[00:02:24,240] and we can decide to
+[00:02:27,080] walk this controller as the environment
+[00:02:29,879] player.
+[00:02:31,439] So, here the environment is uh
+[00:02:33,759] controlling whether cars are on road A
+[00:02:36,599] or B. So, if we want to walk this as the
+[00:02:38,719] environment player,
+[00:02:41,080] in this dialogue, what we see is we have
+[00:02:43,280] some options to filter the states that
+[00:02:45,560] we see. We'll look at that later. And
+[00:02:47,560] then the main things that we can do is
+[00:02:50,080] we can select the next state. So, the
+[00:02:53,000] environment starts with providing some
+[00:02:54,759] input. So, here we only have one option,
+[00:02:58,039] and that is because there is um an
+[00:03:00,800] assumption that initially
+[00:03:02,840] we have car A equals true and not car B.
+[00:03:06,680] So, of course, then the environment is
+[00:03:08,439] restricted to that initial assumption.
+[00:03:11,680] Uh so, now let's select this state. Now,
+[00:03:14,239] let's assume that no further cars are
+[00:03:16,919] coming. So, we want to see what happens
+[00:03:19,319] when no further cars are coming. So, we
+[00:03:20,959] can just double-click again here on
+[00:03:23,919] the false states a bit, and we see that
+[00:03:26,439] there is always a system response
+[00:03:28,319] because that's what the controller
+[00:03:29,639] generates, and the controller keeps the
+[00:03:31,919] lights
+[00:03:34,719] keeps the lights both off. So, let's
+[00:03:38,479] give a few more
+[00:03:40,360] uh no cars coming, and and we see here
+[00:03:43,159] that always the controller responds with
+[00:03:45,840] keeping the lights off. That's
+[00:03:47,280] reasonable, right? So, now let's see
+[00:03:48,680] what happens if we We cars coming.
+[00:03:52,360] So, now let's choose this one and we see
+[00:03:55,479] immediately after having a
+[00:03:58,439] both cars on both streets, we see that
+[00:04:01,599] the
+[00:04:03,360] traffic light on street A is green
+[00:04:07,159] and the one on B is false. So there is a
+[00:04:09,680] guarantee of course here that they will
+[00:04:12,280] never be
+[00:04:13,919] true together. So that makes a lot of
+[00:04:16,680] sense and now let's see what happens if
+[00:04:19,120] cars are coming again.
+[00:04:21,079] Um
+[00:04:22,199] now we see
+[00:04:23,680] both are
+[00:04:25,240] off and then the green one
+[00:04:29,839] uh on on street B
+[00:04:32,360] the traffic light on street B turns
+[00:04:34,199] green. So
+[00:04:36,600] it will basically do a round robin and
+[00:04:40,040] then make sure we always eventually have
+[00:04:44,079] the lights
+[00:04:46,000] uh yeah, both green lights on A and B.
+[00:04:50,639] So the default behavior is that we are
+[00:04:52,519] keeping a log. So the log um this
+[00:04:56,519] check box here says generate a log. This
+[00:04:58,600] is turned on by default and this means
+[00:05:01,279] that the states that we saw here, they
+[00:05:03,600] are saved into a file. So we can later
+[00:05:05,839] review the log. Uh we can now maybe
+[00:05:08,519] close
+[00:05:09,879] here and if we refresh, then we see that
+[00:05:12,600] in the file system it actually created
+[00:05:14,360] this log here, which is the states that
+[00:05:17,399] the
+[00:05:18,879] um that our that we basically walked
+[00:05:21,480] through. Here the states are combined.
+[00:05:24,079] They're always the environment
+[00:05:25,879] variables, then the system variables.
+[00:05:28,279] So we could start the controller worker
+[00:05:30,480] again and then load that file. So let's
+[00:05:33,040] walk again. Uh it doesn't really matter
+[00:05:34,879] for loading logs as who we are walking
+[00:05:38,040] the controller.
+[00:05:39,360] Uh we just select the log
+[00:05:42,319] and then um
+[00:05:44,120] we can
+[00:05:45,240] either always click here the next state,
+[00:05:47,000] but now it's a combined state because
+[00:05:49,040] there's no full log.
+[00:05:50,879] We're not separating between system and
+[00:05:53,319] environment.
+[00:05:54,759] Also, by clicking on next state here, we
+[00:05:57,199] would walk through the next states until
+[00:06:00,319] we are
+[00:06:01,800] reaching the end of the log. So, this is
+[00:06:04,160] how we can also replay logs.
+[00:06:06,519] If we say reset, then
+[00:06:11,160] we reset the log and we also reset the
+[00:06:14,600] symbolic controller and we can start
+[00:06:16,600] again
+[00:06:17,800] playing the
+[00:06:20,759] playing the controller. So, let's stop
+[00:06:23,279] this now and and now what we can also do
+[00:06:25,639] is we can
+[00:06:27,279] not only walk as the environment player
+[00:06:30,519] where we provide the inputs, we could
+[00:06:31,800] also walk as the system player or as
+[00:06:33,759] both players. Now, let's walk maybe as
+[00:06:35,360] both players. Again, the initial state
+[00:06:37,800] is fixed by some assumption, then
+[00:06:43,879] next we can select some states,
+[00:06:47,040] and then we see suddenly that in some
+[00:06:49,319] cases the system actually has multiple
+[00:06:51,519] options. So, here the system could turn
+[00:06:54,879] on the green light or or not. And these
+[00:06:59,680] multiple options, this actually
+[00:07:03,160] is the case because we have by default a
+[00:07:07,279] symbolic controller that is not
+[00:07:08,839] deterministic. So, usually a controller
+[00:07:11,240] should be deterministic. So, if the
+[00:07:13,040] environment gives us one
+[00:07:15,160] possible input, which it always does,
+[00:07:17,360] then we respond with a single possible
+[00:07:19,560] output, but then playing as the system
+[00:07:21,639] would not be
+[00:07:23,360] so interesting because we could
+[00:07:24,879] basically just choose a single option,
+[00:07:27,279] but let's
+[00:07:28,759] maybe
+[00:07:29,879] see where we can turn on this
+[00:07:31,839] determinization. So, it is actually more
+[00:07:36,199] more efficient to synthesize a
+[00:07:37,879] non-deterministic controller that is
+[00:07:39,720] then
+[00:07:40,920] uh,
+[00:07:42,199] at runtime or simply by picking any
+[00:07:45,240] possible state. So, any possible system
+[00:07:48,600] response that the controller allows is
+[00:07:51,639] guaranteed to satisfy the specification.
+[00:07:54,279] But, if we say determinize the
+[00:07:56,199] controller, so if we go to the
+[00:07:58,000] preferences of Spectra and then say
+[00:08:00,439] determinize the static symbolic
+[00:08:02,439] controller, it would make sure that we
+[00:08:04,399] only get a single a single system
+[00:08:08,319] output for every uh, environment state.
+[00:08:12,319] So, let's now synthesize the controller
+[00:08:15,079] again. So, then we can
+[00:08:18,279] now
+[00:08:19,439] again walk as both players and now
+[00:08:22,918] whenever
+[00:08:24,240] we are the system player, we should only
+[00:08:26,639] get a single option. So, again, the
+[00:08:30,079] environment is not really restricted. We
+[00:08:32,479] it could provide cars, either no cars,
+[00:08:35,479] or it can provide cars on both sides.
+[00:08:38,000] And now the system will always respond
+[00:08:39,679] with a single
+[00:08:41,120] uh, option.
+[00:08:42,559] If we
+[00:08:44,279] maybe want to um, filter the states. So,
+[00:08:48,200] here we we don't have many
+[00:08:49,839] possibilities, but you can imagine that
+[00:08:52,159] if we increase the number of variables,
+[00:08:55,559] then
+[00:08:56,639] this will quickly blow up. So, what we
+[00:08:58,879] can do is we can either choose a
+[00:09:01,919] variable and filter by the by setting
+[00:09:05,799] this variable to a specific value. So,
+[00:09:07,960] let's say we want to set variable car B
+[00:09:10,759] to false,
+[00:09:12,320] uh, and we simply add this filter, then
+[00:09:16,039] it would filter here only the states
+[00:09:17,799] where car B is false. Now, if we want to
+[00:09:20,879] do the same thing for car A false, then
+[00:09:24,399] we would only get these states shown.
+[00:09:28,159] These filters, they only apply to the
+[00:09:32,120] player who owns the variables, of
+[00:09:33,879] course. So, basically now we are as the
+[00:09:37,440] system player
+[00:09:39,200] and now these filters
+[00:09:41,840] they would have no effect because we are
+[00:09:44,240] now entering different kinds of
+[00:09:45,799] variables. But as soon as we are the
+[00:09:47,360] environment player again, it would
+[00:09:49,080] filter again based on this. We can
+[00:09:50,840] remove filters
+[00:09:52,799] like that
+[00:09:55,240] or clear.
+[00:09:57,720] Then we can also do some more advanced
+[00:10:01,559] filters. So we could, for example,
+[00:10:04,360] say that we want to filter where we have
+[00:10:06,720] car A or car B. So here the syntax that
+[00:10:11,519] we can use is exactly the same syntax we
+[00:10:14,360] use in Spectra specifications. So we
+[00:10:16,840] can, yeah, use this or or we can use an
+[00:10:21,480] implies
+[00:10:23,000] and then we apply and then we always get
+[00:10:25,360] the the different filters
+[00:10:28,720] the different options filtered. So yeah.
+[00:10:33,279] This way we would have at least one car
+[00:10:35,600] if we put the or
+[00:10:37,960] then apply that filter.
+[00:10:40,120] You can write anything you can you can
+[00:10:43,240] write almost everything that you can
+[00:10:44,480] write in Spectra. So you could even use
+[00:10:46,039] predicates here or other language
+[00:10:48,240] features. You can also mix the
+[00:10:50,000] variables, but there is some restriction
+[00:10:52,159] here because
+[00:10:53,919] let's say we want to say something where
+[00:10:56,320] car A implies
+[00:10:59,519] green A
+[00:11:01,320] and we use that as a filter. So this
+[00:11:03,360] doesn't really make sense in the
+[00:11:05,399] controller walker because what happens
+[00:11:07,519] is that the
+[00:11:09,279] environment inputs and the system
+[00:11:12,320] outputs they will always be matched
+[00:11:14,240] against this filter, but here
+[00:11:16,960] car A implies green B. If sorry, car A
+[00:11:20,399] implies green A. If we only have the
+[00:11:23,080] variable car A, then any
+[00:11:27,000] assignment is possible for that for that
+[00:11:29,960] variable.
+[00:11:31,000] There is B
+[00:11:32,879] green A is basically a don't care. So,
+[00:11:35,559] here the filter
+[00:11:37,159] on the environment variables only will
+[00:11:39,080] not have an effect.
+[00:11:41,159] Um and then similarly on the system
+[00:11:45,120] side, it's basically
+[00:11:47,799] here our choices will not restrict car
+[00:11:51,159] A. So, again also on the system side,
+[00:11:53,639] this doesn't really have an effect.
+[00:11:55,639] Might be a difference if we have an and
+[00:11:58,720] here. Um but basically for these
+[00:12:01,600] filters, you should not really mix
+[00:12:04,120] the the different environment and system
+[00:12:06,879] variables because these filters, they
+[00:12:08,960] always apply to the choices here only
+[00:12:11,600] and not to the
+[00:12:13,240] states that we're generating. Um
+[00:12:15,720] if you want to be a bit more
+[00:12:17,879] um
+[00:12:19,240] Yeah, if you want to do do something on
+[00:12:21,240] the states, then this will be the
+[00:12:22,840] breakpoints, but that's another another
+[00:12:25,159] session.
+[00:12:27,320] Okay. Then one more thing is if we have
+[00:12:30,639] a more complex specification, for
+[00:12:33,120] example, this one here.
+[00:12:36,320] I say it's more complex because we have
+[00:12:37,839] the response pattern actually
+[00:12:40,000] instantiated three times.
+[00:12:43,919] And we have um
+[00:12:46,200] past LTL operators.
+[00:12:48,279] So, if we now synthesize that, the way
+[00:12:51,399] that
+[00:12:53,120] these features here are internally
+[00:12:55,759] handled in Spectra is by adding
+[00:12:58,759] auxiliary variables. So, these will also
+[00:13:01,519] show up in the controller walker because
+[00:13:03,720] they might be of interest for the
+[00:13:05,759] debugging. So, let's have a look at
+[00:13:08,720] playing this as both players.
+[00:13:11,639] Now, again the inputs,
+[00:13:14,039] that's the same, but then we see
+[00:13:15,839] suddenly that we have tons of auxiliary
+[00:13:18,559] variables.
+[00:13:20,159] The names, they
+[00:13:21,839] they relate to the features. So, for
+[00:13:24,200] example, the re- three response
+[00:13:26,320] patterns, they are encoded in in these
+[00:13:28,960] variables and usually this is a bit
+[00:13:34,200] if we really want to debug what's going
+[00:13:36,120] on, um,
+[00:13:37,279] then maybe we are interested in these
+[00:13:38,720] variables, but if we're not interested
+[00:13:40,440] in these variables, we can simply
+[00:13:42,559] uh, disable them from being shown. And
+[00:13:48,360] yeah, then it would show us the system
+[00:13:50,559] variables, only the system variables
+[00:13:52,120] which we really enabled. So, this makes
+[00:13:54,879] it a little bit easier um, to choose. In
+[00:13:57,399] the log, they would still all appear,
+[00:14:00,720] um, so that we can replay
+[00:14:03,399] the log, uh, completely.
+[00:14:06,159] And you can of course also remove some
+[00:14:08,320] of the
+[00:14:09,440] environment variables, but then
+[00:14:11,600] um,
+[00:14:12,919] yeah,
+[00:14:14,039] you still have
+[00:14:15,600] uh, the these are still separate states.
+[00:14:17,960] So, you see that the the values are the
+[00:14:20,399] same. Now, you're just not seeing that
+[00:14:22,679] they are different states, but they are
+[00:14:24,200] different because we have, uh, here, I
+[00:14:27,200] guess, where car A, that is not shown,
+[00:14:30,279] is false, and here where car B, that is
+[00:14:32,279] not shown, is false, because for the
+[00:14:33,919] execution of the controller, we always
+[00:14:35,440] need the complete assignments. So, uh,
+[00:14:37,679] it's probably not a good idea to hide
+[00:14:39,080] environment variables because
+[00:14:41,120] yeah, we always would need to see all of
+[00:14:43,320] them. We can hide system variables
+[00:14:45,480] because for system variables, uh, we
+[00:14:47,480] might even just have deterministic
+[00:14:50,600] uh, choices, so usually just a single
+[00:14:52,839] option, and then maybe we are only
+[00:14:54,720] interested whether green B is is true,
+[00:14:57,480] so we only want to see green B.
+[00:15:01,000] Uh, that's usually a good idea then.
+[00:15:04,399] Okay, and now the for this module would
+[00:15:07,240] be to synthesize a controller from the
+[00:15:09,759] specification,
+[00:15:11,320] uh, grid L3 less spectra,
+[00:15:14,600] and then explore
+[00:15:16,839] both players. So, explore the
+[00:15:19,080] specification as both players, and you
+[00:15:21,480] should not use the determinization
+[00:15:23,559] because if you turn off determinizing
+[00:15:26,200] the controller, you usually get more
+[00:15:29,159] choices as the system which makes some
+[00:15:31,879] sense when you just want to explore the
+[00:15:33,639] specification. So the specification is
+[00:15:36,279] this one which is which was used in
+[00:15:39,159] module L3 but I have deleted some of the
+[00:15:42,559] assumptions and guarantees
+[00:15:44,879] to make it a bit more more interesting
+[00:15:47,159] to explore. It's basically the movement
+[00:15:49,159] of a robot on a grid
+[00:15:51,440] and here the size of the grid we
+[00:15:54,080] have restricted it to five to make it a
+[00:15:55,960] little bit more
+[00:15:58,120] easier to
+[00:15:59,840] to browse.

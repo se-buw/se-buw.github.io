@@ -1,0 +1,101 @@
+Title: [A1] Synthesize your first controller (solution)
+Video ID: 6yGOy4q9Zpw
+Channel: Jan Oliver Ringert
+---
+[00:00:00,320] okay so let's have a look at a solution
+[00:00:02,240] to this task
+[00:00:04,400] we were checking whether they are the
+[00:00:06,878] two specifications are realizable
+[00:00:09,439] and if so synthesize the controller and
+[00:00:11,119] explain how the specifications work
+[00:00:13,839] so the the first change in specification
+[00:00:17,039] 2a
+[00:00:18,000] was to combine the justice assumptions
+[00:00:21,039] that
+[00:00:22,320] car a and car b always eventually
+[00:00:26,719] happen and that they then happen at the
+[00:00:29,678] same
+[00:00:30,000] time now let's see if this is realizable
+[00:00:35,679] spectra check reliability it says it is
+[00:00:40,479] and we can synthesize a concrete
+[00:00:43,200] controller
+[00:00:44,719] that's easy so what we actually see here
+[00:00:48,399] that car a and b
+[00:00:52,399] now always eventually happen at the same
+[00:00:54,558] time
+[00:00:55,600] this is something that would also
+[00:00:57,759] satisfy
+[00:00:58,960] the two assumptions that car a happens
+[00:01:01,920] eventually and that car b happens
+[00:01:03,600] eventually
+[00:01:04,239] so this is just a special case a little
+[00:01:08,159] bit more
+[00:01:09,118] um yeah specialized than the
+[00:01:12,640] two independent assumptions but the two
+[00:01:15,040] independent assumptions could be
+[00:01:16,799] satisfied by exactly the same kind of
+[00:01:18,879] environments so it's no
+[00:01:20,560] big surprise that this is also
+[00:01:22,239] realizable
+[00:01:24,560] and we see here in the strategy how it
+[00:01:27,920] works so
+[00:01:28,719] initially we go to state s1 and then
+[00:01:31,920] basically you see that as one sometimes
+[00:01:33,920] goes to a zero but sometimes stays in s1
+[00:01:36,799] so actually the cases that we are
+[00:01:39,118] staying as one
+[00:01:40,000] in s1 are the cases where
+[00:01:43,438] there is no car for a so we are
+[00:01:46,799] basically just waiting for a car on
+[00:01:49,840] a and while there's no car for a we stay
+[00:01:52,799] in s1
+[00:01:54,000] then if there is a car for a
+[00:01:58,718] we set the light for a
+[00:02:02,319] true and then we go to a zero and in a
+[00:02:04,959] zero we
+[00:02:05,680] we basically do the same thing but now
+[00:02:09,118] we are waiting for a car for b
+[00:02:12,318] and only if there is a car for b we set
+[00:02:15,439] the light to true and then go
+[00:02:17,598] back to s1 so basically this way we are
+[00:02:20,318] kind of alternating between waiting
+[00:02:22,239] states
+[00:02:24,159] and that is completely fine because
+[00:02:27,039] saying
+[00:02:27,598] always eventually i mean in
+[00:02:30,719] in theory there would be cars queuing up
+[00:02:32,959] if only one car
+[00:02:34,239] would ever pass
+[00:02:38,318] but here in this case it it
+[00:02:41,840] doesn't really matter because we know
+[00:02:43,519] that enough cars will always be coming
+[00:02:46,800] to satisfy a and then b and then a
+[00:02:50,479] and then b so this is what the strategy
+[00:02:53,598] for this controller is doing
+[00:02:58,400] now let's look at to b let's
+[00:03:02,080] check realizability first and it says
+[00:03:04,158] it's unrealizable
+[00:03:05,360] what happened is that the guarantees
+[00:03:08,080] here were merged as well into a single
+[00:03:10,239] one
+[00:03:12,318] and now this basically instead of always
+[00:03:15,439] eventually green
+[00:03:16,560] a and always eventually green b we now
+[00:03:19,199] say always eventually green a
+[00:03:20,800] and queen b the reason is
+[00:03:24,000] that this is unrealizable is because it
+[00:03:26,479] simply contradicts
+[00:03:27,919] this safety guarantee
+[00:03:30,959] which says a and b are never true
+[00:03:32,639] together and this one was basically
+[00:03:34,878] saying that
+[00:03:35,598] a and b happen together
+[00:03:38,719] after some finite amount of time so
+[00:03:42,239] and that over and over again so this is
+[00:03:44,000] clearly something
+[00:03:45,519] where we have a contradiction between
+[00:03:47,519] this liveness
+[00:03:49,199] and this safety that rules out any
+[00:03:51,840] states where
+[00:03:53,438] green a and green b happen at the same
+[00:03:55,199] time

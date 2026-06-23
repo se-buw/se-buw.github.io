@@ -1,0 +1,49 @@
+Title: [E3] Advanced step-by-step simulation (solution)
+Video ID: 7IH-VX17tfk
+Channel: Jan Oliver Ringert
+---
+[00:00:01,360] so the task for
+[00:00:03,359] e3 was to synthesize the controller for
+[00:00:05,519] the traffic a1 specification
+[00:00:07,359] and check whether we can reach the state
+[00:00:09,359] car a car b
+[00:00:10,880] and green b so two cars are coming and
+[00:00:13,919] the green light is on
+[00:00:15,279] this is the specification so first thing
+[00:00:17,920] again we synthesize a static symbolic
+[00:00:20,000] controller
+[00:00:22,480] this works it is saved to the disk then
+[00:00:26,239] we can open the rich controller walker
+[00:00:28,879] maybe as both players doesn't really
+[00:00:30,879] matter
+[00:00:31,678] we add a breakpoint the breakpoint would
+[00:00:35,039] be
+[00:00:35,600] car a and car b
+[00:00:39,280] and green b and
+[00:00:42,719] then we want to see whether we can reach
+[00:00:44,399] that so let's do
+[00:00:45,840] check reachability it can reach this
+[00:00:48,960] and it is actually only requires two
+[00:00:51,759] states
+[00:00:52,719] so this would be the the trace to get
+[00:00:56,238] there
+[00:00:56,558] shown down here so now the
+[00:01:00,238] break point is reached we have reached
+[00:01:02,000] this
+[00:01:03,359] we've reached the state that satisfies
+[00:01:04,959] this predicate we can also
+[00:01:06,640] of course change this maybe we want to
+[00:01:10,079] look whether it's possible that we have
+[00:01:13,840] two cars and then we have both
+[00:01:16,879] traffic lights off so currently this
+[00:01:20,478] evaluates to false now to check the next
+[00:01:22,400] breakpoint we need to exit the previous
+[00:01:24,840] switchability
+[00:01:26,560] and then we can again say check which
+[00:01:29,519] ability for the
+[00:01:30,719] new for the new breakpoint and now it's
+[00:01:33,920] yeah again possible in a single step
+[00:01:36,959] so we could reset again to the initial
+[00:01:38,840] state
+[00:01:40,400] check reachability and it's very easy
+[00:01:44,239] to get there

@@ -1,0 +1,144 @@
+Title: [A2] Unrealizability (solution)
+Video ID: 8ChDqSViJH4
+Channel: Jan Oliver Ringert
+---
+[00:00:00,320] okay so let's have a look at the
+[00:00:01,760] solutions for these tasks
+[00:00:03,759] we had to analyze these three
+[00:00:06,240] specifications b
+[00:00:07,679] c and d and understand the reasons for
+[00:00:10,359] unrealizability
+[00:00:11,599] using a core or a counter strategy
+[00:00:14,880] so first we should always check whether
+[00:00:16,239] they're really unrealizable so
+[00:00:18,640] this one well we only have three
+[00:00:20,399] guarantees that can't be so difficult
+[00:00:24,320] it's unrealizable okay
+[00:00:27,599] let's see if the core tells us anything
+[00:00:33,039] there is a core of a single guarantee
+[00:00:38,640] this guarantee says always eventually we
+[00:00:40,960] have a car on a
+[00:00:42,159] and green a and we say we never have
+[00:00:47,119] green and b together so let's have a
+[00:00:49,600] look at the
+[00:00:50,399] counter strategy so the core really just
+[00:00:53,119] had a single thing here
+[00:00:54,640] so let's have a look at a counter
+[00:00:56,079] strategy the counter strategy is also
+[00:00:58,719] quite simple and just by looking at it
+[00:01:00,558] we see that the environment
+[00:01:01,920] always gives us falls for cars on a
+[00:01:05,118] and car zone b so there is never any car
+[00:01:08,319] coming on a never any car coming on b so
+[00:01:11,359] we're clearly missing some assumption
+[00:01:12,879] here or maybe something is wrong with
+[00:01:15,280] these guarantees
+[00:01:16,799] that they are not the right guarantees
+[00:01:23,438] but that's not the question right now
+[00:01:25,920] the question was to understand why it's
+[00:01:27,680] unrealizable and here it's unrealizable
+[00:01:29,599] because
+[00:01:30,640] there's no way we can satisfy
+[00:01:34,719] this guarantee and there's also no way
+[00:01:36,719] we can satisfy this guarantee because
+[00:01:38,560] there is simply no car
+[00:01:41,200] coming okay now
+[00:01:44,640] let's look at the next one so check
+[00:01:47,118] realizability again it's unrealizable
+[00:01:49,759] now let's calculate a core
+[00:01:53,118] to narrow down the problem oh
+[00:01:57,680] that doesn't narrow it down so much it's
+[00:02:00,159] simply
+[00:02:00,799] all of the guarantees
+[00:02:04,640] so let's see if the counter strategy
+[00:02:07,599] tells us anything
+[00:02:08,719] well at least the counter strategy is
+[00:02:10,318] really simple the counter strategy would
+[00:02:12,719] send always a car and on a and always a
+[00:02:16,159] car on b
+[00:02:18,000] now let's see why would that be a
+[00:02:20,479] problem for
+[00:02:21,199] any of these guarantees
+[00:02:24,318] again we can never have green lights at
+[00:02:26,159] a and b at the same time
+[00:02:27,680] otherwise the cars might crash and then
+[00:02:30,400] it says always eventually we have to
+[00:02:32,239] have a
+[00:02:32,800] car on
+[00:02:36,000] a which implies that we also have green
+[00:02:40,080] a
+[00:02:42,159] and now we see that here
+[00:02:46,719] car a is always true which means that
+[00:02:50,000] really to make this implication true we
+[00:02:52,239] always eventually have to have
+[00:02:54,239] a green light on a um
+[00:02:57,280] now we also have always a car on b
+[00:03:00,479] and here it says when there's a current
+[00:03:02,080] b we we just need to have the green
+[00:03:03,919] light
+[00:03:04,639] so this is an always not an always
+[00:03:07,280] eventually
+[00:03:08,080] which means that this basically has to
+[00:03:10,639] hold in every
+[00:03:12,239] step so in every step we need
+[00:03:15,598] to have a green light on b
+[00:03:20,800] and together with this that we can't
+[00:03:23,598] have a green light on a and b
+[00:03:25,039] together we're basically forced to
+[00:03:28,158] violate this
+[00:03:29,919] either this lightness a sun this
+[00:03:32,878] lifeless guarantee or we are forced to
+[00:03:34,719] violate this
+[00:03:37,039] yeah the safety guarantee or this safety
+[00:03:40,400] guarantee so basically
+[00:03:42,080] uh that's why the core is so big because
+[00:03:44,479] all of them
+[00:03:45,120] together they they force us
+[00:03:48,158] to not being able to realize the
+[00:03:52,080] specification if we would remove any of
+[00:03:55,680] the guarantees
+[00:03:58,799] then the specification would be
+[00:04:01,438] realizable
+[00:04:02,400] that is a property of the core because
+[00:04:04,318] the core is always minimal
+[00:04:07,919] okay this was c and the reason here was
+[00:04:10,318] simply
+[00:04:11,280] that if we have a car always coming on b
+[00:04:15,919] then the there must be a green light on
+[00:04:18,959] b
+[00:04:19,358] and then we can never
+[00:04:23,120] have a green light on a because of this
+[00:04:26,310] [Music]
+[00:04:27,759] exclusion here so that is why we have to
+[00:04:30,879] violate this
+[00:04:32,319] liveness assumption now let's have a
+[00:04:34,720] look at the last one
+[00:04:36,800] we start again by checking realizability
+[00:04:38,720] it is unrealizable
+[00:04:41,680] we can try to compute a core
+[00:04:47,120] again it's all of them
+[00:04:52,079] and now if we check for a
+[00:04:55,279] concrete controller ah sorry
+[00:04:59,120] that was a concrete controller so if we
+[00:05:00,879] check for a counter strategy
+[00:05:02,720] then so this is actually a little bit of
+[00:05:04,319] a tricky case because it says that
+[00:05:06,560] we will be forced to a deadlock
+[00:05:09,600] but what we don't see is the outgoing
+[00:05:12,240] transition that that really forces us to
+[00:05:14,399] that lock so what we see is here
+[00:05:16,319] initially there is no car
+[00:05:19,439] and then no matter what we do we end up
+[00:05:22,000] in a
+[00:05:22,478] dead state but the reason why
+[00:05:25,759] the state is dead is not really visible
+[00:05:29,120] here
+[00:05:29,759] what happens in this state is that the
+[00:05:34,000] both cars will appear we have
+[00:05:37,199] both of them true this means that green
+[00:05:39,360] a must be true green b must be true but
+[00:05:41,360] that's not possible
+[00:05:42,478] so this is how we basically deadlock the
+[00:05:44,800] safety
+[00:05:46,240] um we have a kind of deadlock through
+[00:05:49,918] our safety guarantees

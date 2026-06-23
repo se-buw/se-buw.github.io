@@ -1,0 +1,195 @@
+Title: [L2] Advanced language constructs
+Video ID: dIbmIhIJA3s
+Channel: Jan Oliver Ringert
+---
+[00:00:00,960] okay so let's have a look at some
+[00:00:02,319] advanced language constructs we will
+[00:00:04,000] look at
+[00:00:05,040] type definitions defines arrays and
+[00:00:07,440] predicates
+[00:00:10,718] so we'll use again the same
+[00:00:12,718] specifications as we had in
+[00:00:14,880] l1 but now we're going to extend them a
+[00:00:18,079] little bit
+[00:00:18,879] so um yeah let's start again with a
+[00:00:22,320] traffic example
+[00:00:23,679] so if we want to express something
+[00:00:27,599] like whether there's a car waiting this
+[00:00:30,000] might get a little bit or
+[00:00:32,159] yeah complicated expression and we might
+[00:00:34,719] use it in multiple places so if we want
+[00:00:36,799] to reuse a
+[00:00:38,878] complicated expression we can simply do
+[00:00:41,039] a define
+[00:00:42,640] the define has a name so let's call it
+[00:00:46,238] car weighting and then we have this
+[00:00:49,359] definition symbol and then we have the
+[00:00:52,159] body of the define
+[00:00:53,439] so the body of the define when is a car
+[00:00:55,359] waiting a car is waiting when there is a
+[00:00:58,558] car at a and not
+[00:01:03,840] green a um
+[00:01:06,959] or when there is a
+[00:01:10,239] car at b and not
+[00:01:14,400] green b so we don't want this to happen
+[00:01:18,719] to be written over and over in our
+[00:01:21,840] text so um
+[00:01:27,200] let's maybe always eventually say we
+[00:01:29,359] don't have a
+[00:01:30,319] car waiting
+[00:01:35,040] ah sorry this was the assumption
+[00:01:38,319] um let's move the assumptions
+[00:01:42,719] just up here and use that as a guarantee
+[00:01:45,280] we
+[00:01:45,759] always eventually don't have a car
+[00:01:49,680] waiting okay now we could check whether
+[00:01:53,118] this is realizable
+[00:01:54,000] or not and it is
+[00:01:57,200] unrealizable because right now there's
+[00:01:58,879] no way to make sure that
+[00:02:01,040] um basically the environment could
+[00:02:03,759] always provide a car
+[00:02:05,280] on a and b so this means at any point in
+[00:02:07,519] time
+[00:02:09,360] any car would be waiting but this is how
+[00:02:12,560] you could use
+[00:02:14,639] defines and you can put any kind of
+[00:02:18,000] expression here
+[00:02:18,959] it doesn't have to evaluate to a
+[00:02:22,159] specific
+[00:02:25,598] boolean value it can also evaluate to
+[00:02:27,520] other values so here in our grid world
+[00:02:30,639] so here in our grid world example we
+[00:02:32,159] could i don't know define something like
+[00:02:34,400] the
+[00:02:35,199] the sum of the coordinates or something
+[00:02:38,239] like that
+[00:02:38,959] so this would be
+[00:02:43,280] define
+[00:02:46,400] maybe coordinate sum and then we could
+[00:02:48,878] say
+[00:02:50,239] robex plus
+[00:02:53,519] rob y and then we could have a
+[00:02:56,800] ah and of course we need the definition
+[00:02:59,840] symbol
+[00:03:00,959] and then we could use that maybe in a
+[00:03:03,120] guarantee that says
+[00:03:05,039] guarantee always
+[00:03:08,479] we want
+[00:03:12,878] some of the coordinates to be less than
+[00:03:17,199] seven something like that then the robot
+[00:03:19,680] has to make sure to stay
+[00:03:21,680] somewhere in a well kind of circle
+[00:03:24,878] around the origin
+[00:03:29,759] okay but we actually have
+[00:03:34,239] here only a single robot maybe we want
+[00:03:36,239] to move use multiple robots and then
+[00:03:38,799] there might be multiple moves so we
+[00:03:41,360] might have a
+[00:03:42,400] move of a robot and we might have a move
+[00:03:47,439] of a drone
+[00:03:52,318] and now we have this repetition of the
+[00:03:54,959] type which is not so nice so what we can
+[00:03:56,878] do is we can also have a
+[00:03:59,438] another kind of definition which is a
+[00:04:01,039] type definition so
+[00:04:02,799] we can define a type so we can
+[00:04:07,280] call a type maybe move and then assign
+[00:04:10,799] it
+[00:04:12,840] to everything we can set as a type so
+[00:04:18,478] we could have this enumeration
+[00:04:22,079] and then wherever we wanted to use that
+[00:04:24,959] enumeration we could use
+[00:04:27,199] the type for it or we can even do the
+[00:04:30,319] same thing for the
+[00:04:32,800] integers here if we want
+[00:04:35,839] to only write that once we could write
+[00:04:38,959] a new type definition and
+[00:04:42,399] maybe we can call it
+[00:04:49,759] a coordinate which goes in this range
+[00:04:58,959] now if we want to extend
+[00:05:02,160] the grid we can simply do it in one
+[00:05:05,199] place
+[00:05:05,680] and set this to 20 but now we still have
+[00:05:09,120] this
+[00:05:10,000] robot x and y that's a bit yeah not
+[00:05:13,519] not that nice we could also have
+[00:05:16,720] something which is an array so if we
+[00:05:19,759] have an array of size
+[00:05:21,120] 2 for the robot
+[00:05:24,959] then we don't even have to repeat that
+[00:05:27,918] so
+[00:05:30,319] maybe we yeah then
+[00:05:33,439] we would have to rewrite um
+[00:05:36,560] this to drop zero
+[00:05:40,000] plus rope one so arrays they
+[00:05:44,079] have yeah they they start counting at
+[00:05:46,319] zero
+[00:05:48,000] and basically the rope
+[00:05:51,519] x would always be then
+[00:05:55,120] a drop
+[00:05:58,639] at zero
+[00:06:02,319] and the rope y would be the
+[00:06:06,240] rob at position one
+[00:06:11,600] and then the moves they also know
+[00:06:15,120] um this might be well this would be the
+[00:06:18,839] move
+[00:06:21,120] rope
+[00:06:30,160] yeah and this way we could use the
+[00:06:33,279] type definitions we can use
+[00:06:36,639] arrays and work with arrays we can
+[00:06:40,160] define them and we can access them
+[00:06:44,240] and yeah then what is
+[00:06:47,759] maybe missing still as one of the
+[00:06:49,839] language features would be a predicate
+[00:06:52,160] so a predicate is something that we
+[00:06:53,759] could
+[00:06:54,478] instantiate so um
+[00:06:57,519] let's say we can we want to define a
+[00:07:01,199] predicate
+[00:07:02,639] predicate has a name so let's
+[00:07:06,478] call it maybe
+[00:07:08,759] [Music]
+[00:07:14,839] fix and the
+[00:07:17,680] parameter might be something of type
+[00:07:21,038] coordinate c
+[00:07:24,319] and then what this fix does is it simply
+[00:07:27,439] says
+[00:07:28,000] that c equals
+[00:07:31,519] next value of c and then we can use that
+[00:07:35,839] in
+[00:07:38,879] a guarantee so we could have a safety
+[00:07:41,680] guarantee that says
+[00:07:43,680] always when we have
+[00:07:48,639] move rob equals
+[00:07:52,319] stay this would imply that
+[00:07:58,639] we fix
+[00:08:02,959] rob zero
+[00:08:04,560] [Music]
+[00:08:07,918] and we fix
+[00:08:12,000] rob also at
+[00:08:15,038] well the the y-coordinate
+[00:08:21,120] so this would be instantiating the
+[00:08:23,360] predicate with different
+[00:08:25,120] coordinates then we can check whether
+[00:08:27,839] this
+[00:08:28,160] is still realizable it is unrealizable
+[00:08:32,719] and to understand why it's unrealizable
+[00:08:35,918] that's probably a bit more tricky
+[00:08:38,479] so this will be in one of the further
+[00:08:41,278] analysis
+[00:08:42,158] that we will do to understand why
+[00:08:44,399] specifications become
+[00:08:46,080] unrealizable
+[00:08:49,360] okay so the task here would be to extend
+[00:08:52,480] the specification in grid l2 spectra
+[00:08:56,159] with the following predicate where you
+[00:08:59,600] have two parameters of type move and you
+[00:09:03,039] assert that these are inverse to each
+[00:09:04,958] other so if one of them
+[00:09:06,399] moves up the other one moves down and if
+[00:09:08,958] one of them moves left
+[00:09:10,000] the other moves right we can ignore the
+[00:09:12,639] case of stay
+[00:09:15,679] and yeah so this will be the
+[00:09:18,958] the task

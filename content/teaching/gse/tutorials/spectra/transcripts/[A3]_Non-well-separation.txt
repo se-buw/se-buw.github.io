@@ -1,0 +1,374 @@
+Title: [A3] Non-well-separation
+Video ID: UlPtJUccy6E
+Channel: Jan Oliver Ringert
+---
+[00:00:00,240] so welcome to this session a three on
+[00:00:02,960] non-weld separation
+[00:00:04,400] and we will quickly recall what it means
+[00:00:06,719] to have a
+[00:00:08,480] correct by construction synthesis in our
+[00:00:11,279] g01
+[00:00:12,718] synthesis we always have assumptions and
+[00:00:15,199] guarantees and
+[00:00:16,559] the semantics of such a specification is
+[00:00:20,079] that as long as all the assumptions are
+[00:00:22,719] satisfied
+[00:00:23,600] the system will guarantee that it
+[00:00:26,239] satisfies
+[00:00:27,359] all of the guarantees so this is when we
+[00:00:30,079] have a
+[00:00:31,039] realizable specification and the
+[00:00:33,600] controller that we synthesize
+[00:00:35,840] will be the one making sure that all of
+[00:00:38,159] the guarantees are satisfied as long as
+[00:00:39,920] all the assumptions are satisfied right
+[00:00:42,640] it can always happen that an assumption
+[00:00:44,238] is not satisfied so for example
+[00:00:46,799] if an assumption was was incorrect or
+[00:00:49,200] the environment misbehaves and then
+[00:00:51,600] usually there's no way to satisfy the
+[00:00:54,558] guarantees
+[00:00:56,399] now in a non the non-weld separation is
+[00:00:59,198] a very very special case
+[00:01:01,039] a non-well separated environment can be
+[00:01:03,359] forced to violate at least one
+[00:01:04,719] assumption
+[00:01:05,438] from some reachable state so we are
+[00:01:07,840] talking about
+[00:01:08,799] the assumptions of a specification
+[00:01:11,760] because they describe the environment
+[00:01:14,400] and we're saying that it can be forced
+[00:01:17,519] to violate
+[00:01:18,799] some assumption so this is a
+[00:01:22,319] very special case where an assumption is
+[00:01:25,040] not
+[00:01:26,000] violated because the environment chooses
+[00:01:27,920] to violate it but
+[00:01:29,359] because it has no choice other than
+[00:01:31,680] violating that assumption
+[00:01:33,920] and we will look at some examples
+[00:01:36,560] because this is usually
+[00:01:38,478] an inherent problem in an environment
+[00:01:41,759] specification
+[00:01:42,719] so the environment is specified in such
+[00:01:45,599] a way
+[00:01:46,239] that it enables for example the system
+[00:01:49,680] to force the environment to violate some
+[00:01:52,078] assumption and
+[00:01:53,118] we will see that that sometimes is the
+[00:01:55,599] only way
+[00:01:56,560] out to synthesize a controller that
+[00:01:59,840] satisfies the
+[00:02:00,879] g01 specification and is correct by
+[00:02:02,879] construction
+[00:02:03,920] but very likely undesired
+[00:02:07,438] so here we have an example of a simple
+[00:02:10,080] grid world we
+[00:02:11,038] saw this before we have coordinates we
+[00:02:13,680] have cells from
+[00:02:15,439] 0 to 5 and 2 dimensional coordinates
+[00:02:19,199] here
+[00:02:19,598] so 2 dimensional grid we have two
+[00:02:21,919] positions
+[00:02:23,759] in the corners of the grid so zero zero
+[00:02:26,719] top left corner and
+[00:02:28,080] five five bottom right corner then we
+[00:02:30,800] have some assumptions
+[00:02:33,360] of how the commands that the robot
+[00:02:36,479] decides to do are
+[00:02:39,680] are implemented by the environment so
+[00:02:41,759] the environment controls the
+[00:02:43,598] position of the robot based on what
+[00:02:47,280] system moves the the system wants to do
+[00:02:52,159] we have these predicates of updating the
+[00:02:54,560] position
+[00:02:55,280] so for example if
+[00:02:58,479] the robot if the system decides to move
+[00:03:02,719] up
+[00:03:03,439] then this means that the
+[00:03:06,959] coordinate the y-coordinate will be
+[00:03:09,919] decreased by one
+[00:03:11,360] and the x-coordinate will stay the same
+[00:03:14,800] and these are the predicates
+[00:03:16,000] implementing this and then we have here
+[00:03:20,400] two guarantees that need to be satisfied
+[00:03:22,479] so
+[00:03:23,519] if we are if the robot is at position
+[00:03:27,120] one then it should ensure that in the
+[00:03:29,039] next step
+[00:03:30,959] it is in position two
+[00:03:34,639] and we also always eventually want the
+[00:03:36,639] robot to visit
+[00:03:37,840] position one which then means that in
+[00:03:40,639] the next step the robot has to visit
+[00:03:42,318] um position p2
+[00:03:45,360] so if we look at this um this looks a
+[00:03:47,840] bit
+[00:03:48,639] strange because this next step is the
+[00:03:51,840] immediately next step
+[00:03:53,598] and there is no way that a robot that
+[00:03:56,799] can only move
+[00:03:58,318] one step at a time could travel
+[00:04:01,840] within a single step so basically we can
+[00:04:04,799] only
+[00:04:05,438] travel uh one coordinate at a time
+[00:04:09,039] um we cannot move
+[00:04:12,158] from zero zero to five five that's
+[00:04:14,878] impossible
+[00:04:15,759] so we would expect that this
+[00:04:17,680] specification is not realizable
+[00:04:19,519] so let's have a look
+[00:04:22,560] we'll check the realizability and we see
+[00:04:24,879] it is realizable
+[00:04:26,160] that is surprising we could now check
+[00:04:29,600] why or how it is realized um so let's
+[00:04:33,120] just
+[00:04:33,680] check that in our um we have a
+[00:04:37,040] deterministic
+[00:04:37,918] static symbolic controller so now we're
+[00:04:39,918] simply going to analyze the controller
+[00:04:41,519] and see how
+[00:04:42,720] how is it going to win
+[00:04:47,279] or how is it going to ensure that from
+[00:04:49,839] p1
+[00:04:50,800] 8 travels to p2 we will use the
+[00:04:53,839] controller walker again
+[00:04:56,800] we will walk as the system player
+[00:04:58,478] because that's the only one that we're
+[00:05:00,000] interested in
+[00:05:01,199] we see the robot starts in position
+[00:05:04,800] 2 5 some random position and the
+[00:05:07,918] strategy is to go up
+[00:05:10,639] okay so we are expecting that maybe we
+[00:05:13,439] are moving
+[00:05:14,160] towards zero zero so yeah moving up then
+[00:05:17,439] moving down moving down again that's a
+[00:05:20,879] bit strange
+[00:05:21,600] we would assume that we should walk to
+[00:05:23,439] position one
+[00:05:24,879] which is zero zero but
+[00:05:28,319] yeah what happened is the robot tries to
+[00:05:30,079] move down down down
+[00:05:31,439] and then eventually has a deadlock
+[00:05:34,639] forces a deadlock in the environment
+[00:05:37,360] so there is a problem with the
+[00:05:38,879] environment this controller
+[00:05:41,199] definitely does not satisfy the
+[00:05:44,160] guarantees
+[00:05:45,279] but we know that simply this is correct
+[00:05:46,879] by construction so they all
+[00:05:48,319] it it will this controller does satisfy
+[00:05:51,120] the specification
+[00:05:52,240] so the only way to satisfy the
+[00:05:53,600] specification if we don't satisfy the
+[00:05:55,038] guarantees is by
+[00:05:56,720] forcing a violation of the assumptions
+[00:05:59,279] now
+[00:06:02,160] we can run an analysis here
+[00:06:06,000] spectroid ons comes with a well
+[00:06:07,839] separation analysis
+[00:06:09,199] we can say first diagnose well
+[00:06:10,879] separation of the environment
+[00:06:12,560] so that's what we should do and it says
+[00:06:15,120] well
+[00:06:15,680] the environment specification is
+[00:06:17,600] non-well separated so there is a problem
+[00:06:20,319] and the system can force the environment
+[00:06:22,478] to violate some
+[00:06:23,519] safety assumption from all initial
+[00:06:25,839] states so it's a very serious problem
+[00:06:28,800] some of these assumptions here are
+[00:06:31,279] leading to a problem
+[00:06:32,720] so let's try to analyze which ones and
+[00:06:37,439] the well separation menu also allows us
+[00:06:39,839] to
+[00:06:40,478] compute a non-well separation core
+[00:06:44,879] and this highlights a single assumption
+[00:06:47,680] that is already enough
+[00:06:49,279] to force
+[00:06:52,319] assumption violations so if we if we
+[00:06:54,560] look at this
+[00:06:55,759] this single assumption that if we move
+[00:06:57,680] up then
+[00:06:59,120] the y-coordinate gets decreased
+[00:07:02,160] and the x coordinate stays the same so
+[00:07:04,399] while x coordinate stays the same
+[00:07:05,839] there's
+[00:07:06,639] probably not much that could go wrong
+[00:07:09,519] here
+[00:07:10,240] now let's see decreasing the y
+[00:07:12,160] coordinate
+[00:07:13,598] well in the strategy that we saw it was
+[00:07:16,000] actually increasing the
+[00:07:17,598] one of the coordinates but uh yeah never
+[00:07:20,079] mind so
+[00:07:21,120] one other way is also two there are many
+[00:07:23,839] possible ways
+[00:07:24,639] uh and and one way is to decrease the
+[00:07:27,759] y-coordinate and then once we are
+[00:07:31,120] at zero there's no way to further
+[00:07:34,399] decrease the coordinate but this is an
+[00:07:36,560] assumption that says well you have to
+[00:07:38,399] decrease it
+[00:07:39,199] we can't decrease it below zero because
+[00:07:40,959] that's the range of the data type so
+[00:07:42,478] here is an assumption violation
+[00:07:44,478] we had a fix here where we basically
+[00:07:47,279] said well
+[00:07:49,360] decrease the coordinate unless you reach
+[00:07:53,120] you are at zero and then just stay the
+[00:07:55,279] same yeah this is how we find
+[00:07:57,120] these kind of issues and there is
+[00:07:58,720] another example here
+[00:08:01,598] now let's see if this one is realizable
+[00:08:05,120] it is realizable so realizability and
+[00:08:07,519] non-wall separation
+[00:08:09,038] net do not necessarily have to come
+[00:08:12,240] together but what happens is that
+[00:08:15,360] as in in this case here the there was no
+[00:08:19,038] way
+[00:08:19,439] that the guarantees could be satisfied
+[00:08:23,120] so the non well separation
+[00:08:26,319] actually allowed us to still realize the
+[00:08:28,399] specification
+[00:08:29,439] in in a bad way and that's why we want
+[00:08:30,959] to debug this and maybe fix this
+[00:08:32,958] and here the repaired version is a fix
+[00:08:36,639] so now this one is probably no longer
+[00:08:39,519] realizable
+[00:08:41,440] yep it's unrealizable because we can't
+[00:08:43,120] just fly from
+[00:08:44,639] p1 to p2 in one step okay so in this
+[00:08:47,839] case here
+[00:08:48,720] this specification is also realizable
+[00:08:50,958] now let's have a look whether it is well
+[00:08:52,639] separated again
+[00:08:56,000] if we diagnose it it says it is non-well
+[00:08:58,799] separated
+[00:08:59,759] and now this one is not from all initial
+[00:09:02,639] states but from some initial states or
+[00:09:04,480] from some reachable states
+[00:09:06,559] so let's try to analyze what's wrong
+[00:09:09,120] with this
+[00:09:09,759] uh specification compute a non-well
+[00:09:13,679] separated
+[00:09:14,720] core so now we are a little bit out of
+[00:09:18,559] luck
+[00:09:18,958] the non-well separated core turns out
+[00:09:22,080] to be the complete environment
+[00:09:25,519] specification so
+[00:09:26,879] that's not narrowing it down but it
+[00:09:29,278] means that
+[00:09:30,480] we need the interplay of actually all of
+[00:09:32,720] these
+[00:09:35,039] all of these assumptions to force an
+[00:09:37,919] assumption
+[00:09:38,559] violation so then
+[00:09:43,039] let's have a look we can also
+[00:09:46,519] compute a non-wall separation strategy
+[00:09:49,519] and the non-wall separation strategy
+[00:09:51,839] actually shows us how the
+[00:09:55,519] system could force a violation
+[00:09:58,639] so what we see here is
+[00:10:02,159] that the system forces the violation
+[00:10:05,200] it can only force the violation once car
+[00:10:08,480] a
+[00:10:08,799] and car b are true so it cannot
+[00:10:12,240] always force the violation but once
+[00:10:16,320] we have two cars waiting the system
+[00:10:19,360] could
+[00:10:19,679] decide never to have a green light again
+[00:10:23,519] and then this
+[00:10:26,639] assumption here that always eventually
+[00:10:29,759] uh there will be not two cars waiting
+[00:10:34,159] this assumption would then be violated
+[00:10:36,958] these
+[00:10:38,000] assumptions here they say that the car
+[00:10:40,958] waits until
+[00:10:42,000] it gets a green light so if we have a
+[00:10:45,360] car
+[00:10:45,839] waiting in lane a we don't have a green
+[00:10:48,078] light in a
+[00:10:49,200] then the car will still wait so either
+[00:10:52,000] we have to violate one of these
+[00:10:53,278] assumptions
+[00:10:54,240] that the car magically disappears
+[00:10:58,000] or runs the red light um
+[00:11:01,600] or we cannot no the environment can no
+[00:11:05,519] longer
+[00:11:06,399] satisfy this assumption that there
+[00:11:09,600] are no two cars waiting once we had
+[00:11:13,360] cars waiting so and there are different
+[00:11:14,958] ways to fix this actually
+[00:11:17,120] we could um
+[00:11:20,799] change again the assumption and we say
+[00:11:23,200] well
+[00:11:24,078] um you have to ensure that no car
+[00:11:27,120] no not two cars are waiting at the same
+[00:11:29,120] time or
+[00:11:31,919] just um when there are red lights that's
+[00:11:35,039] also fine
+[00:11:35,759] when there are only red lights that's
+[00:11:37,039] also fine so here we are fixing
+[00:11:40,399] the non-wall separation by adding
+[00:11:44,399] by weakening an assumption so that's one
+[00:11:46,799] way
+[00:11:47,759] um and now let's analyze this one
+[00:11:52,240] so this is now well separated that's
+[00:11:54,720] fine that's the way we want it to be
+[00:11:56,799] because then
+[00:11:57,600] there's no way to exploit these non-wall
+[00:11:59,759] separation so
+[00:12:00,799] usually the synthesizer will not try to
+[00:12:03,039] exploit the non-weld separation
+[00:12:05,278] but as we saw in this example there's no
+[00:12:07,360] way to realize the specification in the
+[00:12:09,600] first place by
+[00:12:11,519] satisfying the guarantees so then it
+[00:12:13,839] will have
+[00:12:14,958] to buy uh to to exploit the non-well
+[00:12:18,159] separation
+[00:12:19,519] so now this was one way of weakening the
+[00:12:22,399] assumption but there is another way
+[00:12:24,320] where we can actually add
+[00:12:27,759] an additional guarantee this guarantee
+[00:12:30,000] here could say
+[00:12:31,519] that when as soon as there is a car a
+[00:12:34,799] we will have a green light and if
+[00:12:37,919] there's a car b
+[00:12:39,440] and not the car a then we will have a
+[00:12:41,759] green light for b
+[00:12:42,720] so basically there's a priority for
+[00:12:45,919] uh green lights on road a but if there's
+[00:12:48,799] no car
+[00:12:49,440] waiting for at a
+[00:12:52,639] then we'll give a green light for b and
+[00:12:55,919] now let's see if this one is well
+[00:12:59,759] separated
+[00:13:02,240] yeah this one is well separated and the
+[00:13:04,320] reason that it's well separated is
+[00:13:05,679] because
+[00:13:06,000] the well separation we can take
+[00:13:08,559] guarantees into account so the very
+[00:13:11,200] theoretic strict version we would not
+[00:13:15,360] we would only look at the environment so
+[00:13:16,958] only look at the assumptions
+[00:13:18,839] and in that case adding a guarantee
+[00:13:22,078] would not help us with
+[00:13:23,759] the the weld separation but
+[00:13:26,799] in the default case we usually consider
+[00:13:30,159] to also assume that the system
+[00:13:34,320] goes by it's its guarantees and
+[00:13:38,078] then adding a guarantee can
+[00:13:41,198] actually make a specification well
+[00:13:43,919] separated again
+[00:13:45,120] so with this with this guarantee there
+[00:13:48,240] is no longer
+[00:13:49,360] any way that the system would be able to
+[00:13:52,078] force the environment
+[00:13:53,360] to violate an assumption so now the task
+[00:13:56,240] for this one would be to analyze
+[00:13:57,919] the specification traffic
+[00:14:01,198] a3b and check it for non-wall separation
+[00:14:04,399] and identify the reasons for non-wall
+[00:14:06,159] separation if there are any

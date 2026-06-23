@@ -1,0 +1,205 @@
+Title: [E2] Execute your reactive system
+Video ID: Zu-EL3fSeIM
+Channel: Jan Oliver Ringert
+---
+[00:00:00,000] So, we have previously seen how to look
+[00:00:02,919] at the controller that we synthesized by
+[00:00:05,120] looking at the concrete controller.
+[00:00:06,879] Then, we've seen how to simulate a
+[00:00:09,759] controller using the controller walker
+[00:00:12,199] in case of a symbolic controller, but
+[00:00:14,039] now we also want to look at how to
+[00:00:16,000] execute the controller of our reactive
+[00:00:18,719] system to actually have it run in some
+[00:00:22,800] piece of code.
+[00:00:24,120] So, what we will do is we start off
+[00:00:26,079] again with a specification. Here is a
+[00:00:28,320] simple traffic light specification. It
+[00:00:30,199] has even some assumptions and guarantees
+[00:00:32,359] removed to be the very, very basics.
+[00:00:35,640] Um and now, to simulate this, we will
+[00:00:39,439] use a symbolic controller, but now we'll
+[00:00:42,039] use the just-in-time symbolic controller
+[00:00:44,359] because this scales better for even
+[00:00:46,799] larger systems. So, we will now
+[00:00:49,079] synthesize a just-in-time symbolic
+[00:00:50,960] controller, and we will see the out
+[00:00:52,679] folder appear. Now, the out folder has a
+[00:00:54,439] little bit of different files, but now
+[00:00:56,679] we don't want to load this in a plugin.
+[00:00:59,159] We really want to run it
+[00:01:00,759] programmatically. So, we will have a
+[00:01:02,640] look at a very, very basic uh
+[00:01:04,680] command-line based simulator. And what
+[00:01:07,840] we need to do is we first need to
+[00:01:11,760] read the inputs that the environment
+[00:01:14,760] would usually provide us,
+[00:01:16,879] and then we need to feed this to the
+[00:01:20,159] controller, and eventually we will read
+[00:01:23,280] the outputs that the controller
+[00:01:24,680] produced. So, in our case, this is the
+[00:01:27,319] the whole application that loads the
+[00:01:29,519] controller. It's just 60 lines of code,
+[00:01:31,680] and the main lines of code that we are
+[00:01:34,959] that we need to look at is the
+[00:01:36,840] controller executor. We need to load the
+[00:01:39,439] controller from this folder out.
+[00:01:43,079] Um that's always very much the same
+[00:01:46,920] line. Um the only thing we need to add
+[00:01:50,120] to the build path of our Java
+[00:01:51,719] application is this executor.jar.
+[00:01:54,640] We might want to have the native
+[00:01:56,680] libraries, CDD or uh the Linux based
+[00:02:00,159] version.
+[00:02:01,319] We don't really need these. It will also
+[00:02:03,200] work just pure Java based, but it will
+[00:02:05,560] be a little bit faster
+[00:02:08,199] if we have these native libraries, but
+[00:02:10,360] the main thing we need is this jar file.
+[00:02:12,719] We add it to the build path and then the
+[00:02:14,840] controller executor that is from this
+[00:02:17,080] jar file. So, this line is important and
+[00:02:20,840] then what we need to do is we need to
+[00:02:23,680] feed the controller with the inputs. So,
+[00:02:28,000] the way we feed the controller is always
+[00:02:31,199] string based. So, we give the names. We
+[00:02:33,639] give a map
+[00:02:35,439] of the name of a variable and the value
+[00:02:37,959] of the variable. So, all the input
+[00:02:39,639] variables we can put them in a in a map
+[00:02:41,479] inputs.
+[00:02:42,719] And then we can
+[00:02:44,680] tell the executor that this is the
+[00:02:46,560] initial state when we run the executor
+[00:02:50,199] for the when we execute it for the first
+[00:02:52,439] time. And if it's not the first time,
+[00:02:55,120] then we just say update state and then
+[00:02:57,280] that's the current inputs received.
+[00:02:59,959] Update state and initial state will do
+[00:03:02,919] the calculation to calculate the
+[00:03:04,959] outputs. We can simply ask the executor
+[00:03:07,319] for the current value of the specific
+[00:03:10,360] variables. So, here in this case we had
+[00:03:14,759] the environment variables car A and car
+[00:03:17,759] B. So, these are our inputs. This is
+[00:03:20,599] what we put in the the inputs or in the
+[00:03:23,719] map of the inputs with the corresponding
+[00:03:26,039] values. They are boolean. So, here we
+[00:03:28,080] put simply true and false or the boolean
+[00:03:31,000] to string basically. For enumeration
+[00:03:33,280] values, you would put the string of the
+[00:03:36,120] enumeration value. For integers, you
+[00:03:38,800] would still have to put the integer to
+[00:03:41,599] string version like we do here for the
+[00:03:44,639] booleans. Yeah, so this is how we
+[00:03:46,599] provide the inputs and then the outputs
+[00:03:48,400] we simply ask the executor to get us the
+[00:03:50,759] outputs. And
+[00:03:53,360] that's it for executing the symbolic
+[00:03:56,240] controller. So, all the other stuff that
+[00:03:58,879] you see
+[00:04:01,199] in this file, this is just
+[00:04:03,840] um
+[00:04:04,719] we start by printing
+[00:04:07,599] whether the car A is present, taking the
+[00:04:10,400] reading the the next line,
+[00:04:12,719] uh converting this to Boolean, just to
+[00:04:14,840] show you how it would work if you want
+[00:04:17,279] to feed your controller actually with
+[00:04:19,720] the real
+[00:04:21,160] uh data types, the Boolean here in this
+[00:04:23,240] case. So, we we get two Booleans for car
+[00:04:25,480] A and car B.
+[00:04:26,918] Um then we feed this to the controller,
+[00:04:29,600] and then in the end we read the values,
+[00:04:32,839] and then based on which
+[00:04:35,680] uh values are true and false, we give
+[00:04:38,279] some outputs.
+[00:04:39,600] So, now let's execute this. We have
+[00:04:42,800] synthesized the symbolic controller.
+[00:04:45,639] Now, we can run
+[00:04:48,360] this traffic simulator
+[00:04:50,480] simply as the main method. So, question
+[00:04:53,240] is, is a car present
+[00:04:55,680] for A? Let's say there is one. Uh let's
+[00:04:58,959] say there is one for B.
+[00:05:01,040] Then it would allow car B to go. Now,
+[00:05:03,839] let's continue.
+[00:05:05,560] Cars are again both present. Um
+[00:05:10,040] then it would allow car A to go.
+[00:05:13,240] So, here yeah, the default um I'm simply
+[00:05:17,160] checking whether it's N for no car
+[00:05:20,279] there.
+[00:05:21,519] So, now let's put N, no car.
+[00:05:25,879] Car A would still be allowed to go.
+[00:05:28,160] That's fine.
+[00:05:29,600] Um
+[00:05:30,839] all cars must stop now.
+[00:05:33,040] Yeah, if we if we don't have cars, this
+[00:05:35,000] controller will have the car stop, but
+[00:05:37,639] there's actually nothing that requires
+[00:05:39,120] this in the uh I think there's nothing
+[00:05:41,199] that requires this in the specification.
+[00:05:43,120] The only thing we want again that there
+[00:05:44,519] are no
+[00:05:45,680] uh cars on green A and green B. So,
+[00:05:49,399] yeah, this is how you would integrate it
+[00:05:51,720] into an application and we have here
+[00:05:56,040] integrated it into an even, uh, a little
+[00:05:58,480] bit more visual way. Uh, so let's stop
+[00:06:02,279] this one on the command line and what
+[00:06:05,680] you see here is basically again inputs
+[00:06:09,360] and
+[00:06:11,720] um, outputs. Again, this is the first
+[00:06:15,000] time we load the controller and then we
+[00:06:17,839] say the initial state is based on these
+[00:06:19,560] inputs. And then again we have this loop
+[00:06:22,959] that just now takes random
+[00:06:26,199] car A and car B inputs, gives them to
+[00:06:28,879] the executor and then takes the green A
+[00:06:31,160] and green B as outputs. So, if we want
+[00:06:33,279] to run this one, this is a bit
+[00:06:36,480] more fancy.
+[00:06:38,240] Uh, then we will soon see the cars
+[00:06:40,600] coming.
+[00:06:42,680] So, now, uh, there's no real input
+[00:06:45,519] output. Well, there is input output for
+[00:06:47,959] the controller, but now it's not
+[00:06:50,079] interactive, um, based on the user
+[00:06:52,199] because here we just
+[00:06:53,680] generate random inputs and outputs when
+[00:06:56,120] the cars are there. But,
+[00:06:58,879] as you saw in the previous example, we
+[00:07:01,000] can or we should usually, uh, have it
+[00:07:03,800] based on on inputs or
+[00:07:06,120] or events or other data that comes in
+[00:07:08,439] from from other
+[00:07:09,879] systems. So, that's for example, when we
+[00:07:12,079] run it on on robots, then the inputs
+[00:07:15,639] that we give to the controller, this
+[00:07:17,399] would really be stuff that we measured
+[00:07:19,319] using sensors
+[00:07:21,360] and abstracted then to the
+[00:07:23,918] the kind of values that we need for, um,
+[00:07:26,918] for running the controllers. Now, the
+[00:07:29,040] task for this would be to extend the
+[00:07:31,519] specification that we had here in E2 and
+[00:07:34,839] extend the execution with an additional
+[00:07:37,360] input variable emergency
+[00:07:39,360] and then a guarantee that in case of
+[00:07:41,279] emergency both lights are red. So, this
+[00:07:44,360] emergency would be a boolean variable
+[00:07:46,560] and the extension would have to happen
+[00:07:48,639] in the specification. So, here you would
+[00:07:50,879] have a new environment variable with the
+[00:07:53,759] emergency and then you would have a
+[00:07:56,000] guarantee that if emergency is true,
+[00:07:58,360] then
+[00:07:59,639] yeah, green A and green B are both yeah,
+[00:08:02,079] are both false. And the next step would
+[00:08:04,439] then be to extend the command line
+[00:08:06,240] simulation to handle this new input. So,
+[00:08:08,959] instead of taking the two inputs of car
+[00:08:11,079] A and car B, we also take the emergency
+[00:08:12,839] input and feed it to the controller. So,
+[00:08:15,759] this would be the the task.

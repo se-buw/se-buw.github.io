@@ -1,0 +1,82 @@
+Title: [E2] Execute your reactive system (solution)
+Video ID: UKe5NiEISgw
+Channel: Jan Oliver Ringert
+---
+[00:00:00,480] okay so as the solution of this task
+[00:00:02,240] we're now going to extend the
+[00:00:03,759] specification with this new input
+[00:00:06,240] of our emergency of an emergency
+[00:00:08,880] variable
+[00:00:09,919] so this would be an environment variable
+[00:00:13,359] of type boolean and it would be called
+[00:00:16,320] emergency
+[00:00:19,118] and then we would say that there's new
+[00:00:21,920] guarantees so this would be
+[00:00:23,839] another safety guarantee always
+[00:00:30,000] emergency would imply that
+[00:00:37,439] not green a and not
+[00:00:41,840] green b now let's see if this is
+[00:00:45,119] realizable
+[00:00:48,159] it's unrealizable and the reason is that
+[00:00:51,520] we could have
+[00:00:54,558] this we need always eventually green b
+[00:00:57,280] so
+[00:00:58,558] a counter strategy could probably be
+[00:01:00,238] that we always have emergency and then
+[00:01:03,439] we would never have this green a on
+[00:01:05,198] green b so
+[00:01:06,640] here one one way to fix this would be
+[00:01:10,840] um to say well if we have emergency then
+[00:01:14,159] we don't need the
+[00:01:15,759] always eventually green b or the the
+[00:01:18,400] green a
+[00:01:19,519] now let's see it's now realizable
+[00:01:23,759] and we can now
+[00:01:26,959] synthesize another controller
+[00:01:30,478] and
+[00:01:34,159] now we need to extend the controller
+[00:01:35,840] runner so if we
+[00:01:37,759] the the command line based one now if we
+[00:01:39,519] run this
+[00:01:41,599] command line based one and we simply say
+[00:01:44,319] car is present
+[00:01:45,359] car is present then
+[00:01:49,359] it will probably
+[00:01:52,478] just ignore uh the value it will i will
+[00:01:55,280] give a default value to emergency but
+[00:01:57,118] that's not actually what we want
+[00:01:59,118] we we want to actually also read the
+[00:02:01,438] emergency value
+[00:02:02,959] so let's extend
+[00:02:07,040] our creation of values so this would be
+[00:02:13,360] simply the new variable emergency
+[00:02:19,439] do we have an emergency
+[00:02:23,598] and this would have to go as another
+[00:02:25,919] input to the
+[00:02:27,199] controller okay so we only extended
+[00:02:30,560] inputs that's fine
+[00:02:32,239] now let's see so let's put a
+[00:02:36,959] car there and let's say we have no
+[00:02:40,318] emergency then we see that car a is
+[00:02:42,400] allowed to go
+[00:02:43,360] so now let's put again cars there and
+[00:02:45,439] say that we have
+[00:02:46,800] an emergency then all cars must
+[00:02:50,000] stop we have again cars we have again
+[00:02:54,560] an emergency again all cars must stop
+[00:02:57,759] we have again cars we don't have an
+[00:03:01,039] emergency
+[00:03:02,158] now car b is allowed to go okay so
+[00:03:05,519] yeah this is the extension uh we have
+[00:03:09,598] simply extended the specification with
+[00:03:12,080] the additional variables
+[00:03:13,280] some additional guarantees and updates
+[00:03:15,680] of guarantees
+[00:03:16,800] and then the main interesting thing here
+[00:03:19,840] was
+[00:03:20,878] actually this this single line uh that
+[00:03:23,439] extends the inputs
+[00:03:24,719] by providing the new input that we have
+[00:03:28,000] just read
+[00:03:29,120] uh and giving it to the to the
+[00:03:31,039] controller
