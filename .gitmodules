@@ -7,3 +7,6 @@
 [submodule "code-examples/spectra-tutorial"]
 	path = code-examples/spectra-tutorial
 	url = https://github.com/jringert/spectra-tutorial.git
+[submodule "code-examples/dafny-intro"]
+	path = code-examples/dafny-intro
+	url = https://github.com/se-buw/dafny-intro.git
