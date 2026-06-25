@@ -12,6 +12,7 @@ In Summer Semester 2026 this selection is increasing in order to offer more vari
 Currently this site offers the following content:
 
 - [Blockly - Tutorial](tutorials/blockly/)
+- [Dafny - Tutorial](tutorials/dafny/)
 - [Eclipse Modeling Framework (EMF) - Tutorial](tutorials/emf/)
 - [Reactive Synthesis with Spectra - Tutorial](tutorials/spectra/)
 - [Xtext - Tutorial](tutorials/xtext/)
