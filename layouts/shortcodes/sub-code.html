@@ -6,7 +6,7 @@
 {{- $repoBranch := .Get "branch" | default site.Params.features.repository.branch | default "main" -}}
 
 {{- /* Map custom language names to the closest available Chroma lexer. */ -}}
-{{- $langAliases := dict "xtext" "antlr" "spectra" "antlr" -}}
+{{- $langAliases := dict "xtext" "antlr" "spectra" "antlr" "dafny" "csharp" -}}
 {{- with index $langAliases (lower $lang) -}}
   {{- $lang = . -}}
 {{- end -}}

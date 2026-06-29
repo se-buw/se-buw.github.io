@@ -8,7 +8,7 @@ This tutorial describes the [Dafny programming language and tools](https://dafny
 
 {{% callout note %}}
 
-The tutoral comes with code examples available as [complete Dafny projects on GitHub](https://github.com/se-buw/dafny-intro). We explain this code in the attached videos. Note that the videos often introduce additional content. It is highly recommended to [WATCH THE VIDEOS](#)!
+The tutorial comes with code examples available as [complete Dafny projects on GitHub](https://github.com/se-buw/dafny-intro). We explain this code in the attached videos. Note that the videos often introduce additional content. It is highly recommended to [WATCH THE VIDEOS](https://www.youtube.com/watch?v=XKukRpMhKIE&list=PLXli1PpH2QN8&index=1)!
 
 {{% /callout %}}
 
@@ -16,7 +16,7 @@ The tutoral comes with code examples available as [complete Dafny projects on Gi
 
 ## Video Tutorials
 
-See the [YouTube playlist](https://www.youtube.com/watch?v=95_8n-FnHyo&list=PLGyeoukah9NbMQqFaMfuGMkAQ-yaaWUD3) for all videos.
+See the [YouTube playlist](https://www.youtube.com/watch?v=XKukRpMhKIE&list=PLXli1PpH2QN8&index=1) for all videos.
 
 ## References
 
