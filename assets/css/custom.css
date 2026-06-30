@@ -24,6 +24,10 @@
   margin-bottom: 0 !important;
 }
 
+.hb-code-container .copy-button {
+  display: none !important;
+}
+
 .hb-code-container .chroma .hl,
 .hb-code-container .chroma .line.hl {
   background-color: rgba(56, 189, 248, 0.22) !important;

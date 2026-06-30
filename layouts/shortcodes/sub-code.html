@@ -190,8 +190,16 @@
           L{{ $startLine }}-L{{ $endLine }}
         {{- end -}}
       </span>
+      <button type="button" class="hb-code-copy-clean rounded bg-white/10 px-2 py-0.5 font-semibold text-gray-100 hover:bg-white/20" aria-label="Copy code" data-copy-b64="{{ $snippet | base64Encode }}">
+        Copy
+      </button>
     </div>
   {{- end -}}
   {{- /* Render the code block */ -}}
   {{ $renderedCode | safeHTML }}
 </div>
+
+{{- if not (.Page.Scratch.Get "hb_clean_copy_script_included") -}}
+  {{- .Page.Scratch.Set "hb_clean_copy_script_included" true -}}
+  <script defer src="/js/hb-code-copy-clean.js"></script>
+{{- end -}}
