@@ -1,5 +1,6 @@
 ---
 title: Introducing GitHub Classroom into a Formal Methods Module
+slug: fmtea-2024
 
 authors:
   - Soaibuzzaman

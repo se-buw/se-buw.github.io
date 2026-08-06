@@ -1,10 +1,9 @@
 ---
 title: 'On Writing SMT-LIB Scripts: Metrics and a New Dataset'
-
+slug: fmpsmt-smt-2025
 authors:
   - Soaibuzzaman
   - Jan Oliver Ringert
-
 
 date: '2025-08-10T00:00:00Z'
 doi: ''

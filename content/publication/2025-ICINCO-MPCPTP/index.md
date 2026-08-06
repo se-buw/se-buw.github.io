@@ -1,5 +1,6 @@
 ---
 title: 'Model Predictive Control for Crowd Navigation via Learning-Based Trajectory Prediction'
+slug: mpcptp-icinco-2025
 
 authors:
   - Mohamed Parvez Aslam

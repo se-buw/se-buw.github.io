@@ -1,5 +1,6 @@
 ---
 title: 'On the Comparison of Learned Classifiers'
+slug: mldiff-sefm-25
 
 authors:
   - Soaibuzzaman

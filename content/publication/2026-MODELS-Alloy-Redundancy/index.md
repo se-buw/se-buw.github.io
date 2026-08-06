@@ -1,5 +1,6 @@
 ---
 title: 'On Redundancy in Alloy Models'
+slug: alloy-redundancy-models-2026
 authors:
   - Soaibuzzaman
   - Jan Oliver Ringert
