@@ -5,7 +5,6 @@ authors:
   - Soaibuzzaman
   - Jan Oliver Ringert
 
-
 date: '2026-07-31T00:00:00Z'
 
 hugoblox:
@@ -29,10 +28,10 @@ featured: true
 
 links:
   - type: pdf
-    url: './publication/2026-models-alloy-redundancy/On-Redundancy-in-Alloy-Models.pdf'
+    url: './publication/alloy-redundancy-models-2026/On-Redundancy-in-Alloy-Models.pdf'
   - type: code
     url: 'https://github.com/se-buw/alloy-redundancy'
-  - type: zenodo
+  - type: dataset
     url: 'https://zenodo.org/records/21333886'
   - type: source
     url: 'https://doi.org/10.1145/3822455.3830324'
