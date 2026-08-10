@@ -20,6 +20,7 @@ Most of our software is available on [GitHub](https://github.com/se-buw) and ope
 - [FM Playground](https://github.com/fm4se/fm-playground) (MIT license)
 - [MLDiff](https://github.com/se-buw/MLDiff) (Apache 2.0 license)
 - Alloy Analyses (MIT license): 
-    - [Semantic Comparison](https://github.com/jringert/alloy-diff)
+    - [Redundancy](https://github.com/se-buw/alloy-redundancy)
+    - [Semantic Comparison](https://github.com/se-buw/alloy-diff)
     - [Abstract Instances](https://github.com/jringert/alloy-absinst)
 - [Spectra Tools](https://github.com/SpectraSynthesizer/) and [Spectra Tutorial](/gse/tutorials/spectra/)
