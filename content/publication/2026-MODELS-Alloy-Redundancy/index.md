@@ -53,7 +53,7 @@ slides: ""
 ---
 
 {{< callout note >}}
-🏆 This paper received a **Distinguished Paper Award** at [MODELS 2026](https://conf.researchr.org/home/models-2026) in Málaga, Spain.
+🏆 This paper received the **SIGSOFT Distinguished Paper Award 🏆** at [MODELS 2026](https://conf.researchr.org/home/models-2026) in Málaga, Spain.
 {{< /callout >}}
 
 ![Alloy Redundancy](./MODELS26-DistinguishedPaperAward.jpg)
