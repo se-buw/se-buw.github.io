@@ -31,6 +31,8 @@ links:
     url: './publication/alloy-redundancy-models-2026/On-Redundancy-in-Alloy-Models.pdf'
   - type: code
     url: 'https://github.com/se-buw/alloy-redundancy'
+  - type: slides
+    url: './publication/alloy-redundancy-models-2026/AlloyRedundancy_Slides_Models26.pdf'
   - type: dataset
     url: 'https://zenodo.org/records/21333886'
   - type: source
@@ -44,3 +46,18 @@ image:
 
 slides: ""
 ---
+
+---
+{{< page-links >}}
+
+---
+
+{{< callout note >}}
+🏆 This paper received a **Distinguished Paper Award** at [MODELS 2026](https://conf.researchr.org/home/models-2026) in Málaga, Spain.
+{{< /callout >}}
+
+![Alloy Redundancy](./MODELS26-DistinguishedPaperAward.jpg)
+
+
+
+

@@ -94,6 +94,8 @@ related:
       weight: 70
 security:
   _merge: deep
+  exec:
+    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^node$', '^npx$', '^postcss$', '^tailwindcss$']
 sitemap:
   _merge: deep
 minify:

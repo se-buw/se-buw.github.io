@@ -1,0 +1,4 @@
+{{- /* Render the page's front matter `links` (PDF, Code, DOI, ...) inside the body. Usage: {{< page-links >}} */ -}}
+<div class="not-prose my-4">
+  {{ partial "page_links_div.html" .Page }}
+</div>
