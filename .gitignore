@@ -6,3 +6,5 @@
 public/
 assets/jsconfig.json
 node_modules/
+# Slides of se-buw/intro-java, fetched by scripts/fetch_intro_java_slides.sh
+static/teaching/intro-java/slides/

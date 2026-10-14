@@ -8,7 +8,12 @@ on:
   push:
     branches: ["main"]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
+  # se-buw/intro-java starts it after a push, with the run whose slides to publish.
   workflow_dispatch:
+    inputs:
+      intro_java_run:
+        description: "Run of se-buw/intro-java whose slides to publish (default: latest successful)"
+        required: false
 
 # Provide permission to clone the repo and deploy it to GitHub Pages
 permissions:
@@ -59,6 +64,15 @@ jobs:
       - name: Build and copy Xtext examples
         run: bash scripts/build_xtext_examples.sh
 
+      # The released slides of se-buw/intro-java: artifact of its build, to /teaching/intro-java/slides/.
+      # Secret SE_BUW_SITE_TOKEN: fine-grained token with Actions read on se-buw/intro-java
+      # (the same token lets intro-java start this workflow: Actions read/write on this repository).
+      - name: Fetch intro-java slides
+        env:
+          GH_TOKEN: ${{ secrets.SE_BUW_SITE_TOKEN }}
+          INTRO_JAVA_RUN: ${{ inputs.intro_java_run }}
+        run: bash scripts/fetch_intro_java_slides.sh
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
@@ -68,8 +82,12 @@ jobs:
         run: |
           echo "Hugo Cache Dir: $(hugo config | grep cachedir)"
           hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+      # Not the slide decks: they would flood the site search
       - name: Index with Pagefind
-        run: npx pagefind --site public
+        run: |
+          mv public/teaching/intro-java/slides "$RUNNER_TEMP/intro-java-slides"
+          npx pagefind --site public
+          mv "$RUNNER_TEMP/intro-java-slides" public/teaching/intro-java/slides
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
