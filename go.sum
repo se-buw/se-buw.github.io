@@ -1,4 +1,2 @@
-github.com/fm4se/website-theme/modules/blox-plugin-netlify v0.7.0 h1:B9vZXP8wgVjSOQEiumT93kA5woY/qi+Hu1Zx962aLvk=
-github.com/fm4se/website-theme/modules/blox-plugin-netlify v0.7.0/go.mod h1:qdWBSV+BSWISupIetfIoZAOWg5gXY9t5GotLePo5+d8=
-github.com/fm4se/website-theme/modules/blox-tailwind v0.7.0 h1:PFfvyMQUJSWhyTck4tLPPwmu93O3ACjDnt2cmPJyxKY=
-github.com/fm4se/website-theme/modules/blox-tailwind v0.7.0/go.mod h1:BiAtgGkBTawm+USiUXev3O4VLdwcEWWzsRosdXJu790=
+github.com/imfing/hextra v0.13.0 h1:1zhCYy0tA9ZRErFBlU6NJEgR1HjK69bgd52EmpwnG00=
+github.com/imfing/hextra v0.13.0/go.mod h1:vi+yhpq8YPp/aghvJlNKVnJKcPJ/VyAEcfC1BSV9ARo=

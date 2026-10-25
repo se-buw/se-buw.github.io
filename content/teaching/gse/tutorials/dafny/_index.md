@@ -6,7 +6,7 @@ weight: 10
 
 This tutorial describes the [Dafny programming language and tools](https://dafny.org/). Dafny is an open-source developer library from Microsoft. It creates a formal verification interface that uses a combination of code and specifications.
 
-{{% callout note %}}
+{{% callout type="info" %}}
 
 The tutorial comes with code examples available as [complete Dafny projects on GitHub](https://github.com/se-buw/dafny-intro). We explain this code in the attached videos. Note that the videos often introduce additional content. It is highly recommended to [WATCH THE VIDEOS](https://www.youtube.com/watch?v=XKukRpMhKIE&list=PLXli1PpH2QN8&index=1)!
 

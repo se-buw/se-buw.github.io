@@ -10,6 +10,8 @@ tags:
   - Alloy
 ---
 
+![SIGSOFT Distinguished Paper Award certificate, MODELS 2026](featured.jpg)
+
 Our paper [On Redundancy in Alloy Models](/publication/alloy-redundancy-models-2026/) received **SIGSOFT Distinguished Paper Award** at [MODELS 2026](https://conf.researchr.org/home/models-2026), the ACM/IEEE International Conference on Model Driven Engineering Languages and Systems in Málaga, Spain.
 
 The paper formally defines redundant constraints in Alloy models and presents algorithms to detect them and explain why they are redundant. 

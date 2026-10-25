@@ -6,7 +6,7 @@ weight: 10
 
 This tutorial describes the [Blockly visual programming language and tools](https://blockly.com/). Blockly is an open-source developer library from Google (recently moved to the Raspberry Pi Foundation). It creates a visual programming interface that uses drag-and-drop blocks.
 
-{{% callout note %}}
+{{% callout type="info" %}}
 
 The tutoral comes with code examples available as [complete Blockly projects on GitHub](https://github.com/se-buw/blockly-intro). We explain this code in the attached videos. Note that the videos often introduce additional content. It is highly recommended to [WATCH THE VIDEOS](https://www.youtube.com/watch?v=95_8n-FnHyo&list=PLGyeoukah9NbMQqFaMfuGMkAQ-yaaWUD3)!
 

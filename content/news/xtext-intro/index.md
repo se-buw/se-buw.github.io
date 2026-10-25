@@ -9,6 +9,8 @@ tags:
   - GSE
 ---
 
+![Xtext grammar and Xtend code generator for the turtle DSL](featured.png)
+
 We have published a new tutorial that teaches how to define Domain-Specific Languages and Code Generators with Xtext. The tutorial shows how to define new textual DSLs. We then show how to define code generators using Xtend. 
 
 The tutorial comes with:
@@ -16,4 +18,4 @@ The tutorial comes with:
 - A complete [GitHub repository with all the code and examples](https://github.com/se-buw/xtext-intro) used in the tutorial.
 - A [video walkthrough of the tutorial](https://www.youtube.com/watch?v=k26RsmAdA4o&list=PLGyeoukah9NbZzlK31hTH7oyZ8FRptT29&index=2), explaining the concepts and demonstrating the implementation.
 
-It joins our collection of tutorials on generative software engineering, including [Blockly for Visual Programming](/teaching/gse/tutorials/blockly/), [Spectra for Reactive Synthesis](/teaching/gse/tutorials/spectra/0a.reactive-synthesis-with-spectra/) and [Ecore in the Eclipse Modeling Framework](/teaching/gse/tutorials/emf/). 
+It joins our collection of tutorials on generative software engineering, including [Blockly for Visual Programming](/teaching/gse/tutorials/blockly/), [Spectra for Reactive Synthesis](/teaching/gse/tutorials/spectra/) and [Ecore in the Eclipse Modeling Framework](/teaching/gse/tutorials/emf/). 

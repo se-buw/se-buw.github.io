@@ -6,7 +6,7 @@ weight: 10
 
 This tutorial describes the [Xtext domain-specific language framework](https://eclipse.dev/Xtext/). Xtext is a rich open-source framework for developing domain-specific languages (DSLs) within the Eclipse IDE and its ecosystem. It provides a complete infrastructure for creating text-based modeling languages, editors, analysis tools, and code generators.
 
-{{% callout note %}}
+{{% callout type="info" %}}
 
 The tutoral comes with code examples available as [complete Xtext projects on GitHub](https://github.com/se-buw/xtext-intro). We explain this code in the attached videos. Note that the videos often introduce additional content. It is highly recommended to [WATCH THE VIDEOS](https://www.youtube.com/watch?v=95_8n-FnHyo&list=PLGyeoukah9NbMQqFaMfuGMkAQ-yaaWUD3)!
 

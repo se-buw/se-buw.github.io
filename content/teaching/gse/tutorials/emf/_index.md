@@ -8,13 +8,13 @@ weight: 5
 # Eclipse Modeling Framework (EMF) - Tutorial
 This tutorial describes the usage of Eclipse EMF, a framework for modeling your data model and creating Java code from it. 
 
-{{% callout note %}}
+{{% callout type="info" %}}
 
 Based on: Lars Vogel (c) 2007, 2016 vogella GmbH Version 3.6, 06.07.2016
 See [License for license information](https://www.vogella.com/license.html)
 {{% /callout %}}
 
-{{% callout warning %}}
+{{% callout type="warning" %}}
 This tutorial has been tested with **Eclipse Modeling Tools 2025-03**. Some screen captures might be from older versions of Eclipse.
 {{% /callout %}}
 

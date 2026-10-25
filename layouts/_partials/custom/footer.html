@@ -1,0 +1,16 @@
+{{- with site.Params.copyright -}}
+  <div class="hx:py-12 hx:text-xs">{{ replace . "{year}" (now.Year | string) | markdownify }}</div>
+{{- end -}}
+
+{{- /* BibTeX dialog, opened by the BibTeX links of publications */ -}}
+<dialog id="se-citation" class="se-citation-dialog" aria-labelledby="se-citation-heading">
+  <div class="se-citation-head">
+    <h2 id="se-citation-heading">Cite</h2>
+    <button type="button" class="se-citation-close" aria-label="Close">×</button>
+  </div>
+  <pre></pre>
+  <button type="button" class="se-citation-copy">Copy</button>
+</dialog>
+{{- with resources.Get "js/citation.js" | minify | fingerprint }}
+<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+{{- end -}}

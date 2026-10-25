@@ -1,0 +1,27 @@
+{{- /*
+Latest pages of a section, for the homepage.
+  {{< latest section="news" count=3 >}}          news as Hextra cards
+  {{< latest section="publication" count=5 >}}   publications as dblp-style entries
+*/ -}}
+{{- $section := .Get "section" | default "news" -}}
+{{- $count := .Get "count" | default 3 -}}
+{{- $pages := first $count (where site.RegularPages "Section" $section).ByDate.Reverse -}}
+{{- if eq $section "publication" -}}
+  <div class="se-pub-list not-prose">
+    {{- range $pages }}{{ partial "publication/entry.html" . }}{{ end -}}
+  </div>
+{{- else -}}
+  {{- $cards := "" -}}
+  {{- range $pages -}}
+    {{- $image := "" -}}
+    {{- with .Resources.GetMatch "featured*" }}{{ $image = (.Fill "800x450 Smart webp").RelPermalink }}{{ end -}}
+    {{- $cards = printf "%s%s" $cards (partial "shortcodes/card.html" (dict
+      "link" .RelPermalink
+      "title" .Title
+      "subtitle" (.Params.summary | default .Summary | plainify)
+      "image" $image
+      "tag" (partial "utils/format-date" .Date)
+    )) -}}
+  {{- end -}}
+  {{- partial "shortcodes/cards.html" (dict "cols" (len $pages) "content" ($cards | safeHTML)) -}}
+{{- end -}}

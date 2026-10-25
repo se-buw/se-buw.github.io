@@ -47,12 +47,7 @@ image:
 slides: ""
 ---
 
----
-{{< page-links >}}
-
----
-
-{{< callout note >}}
+{{< callout type="info" >}}
 🏆 This paper received the **SIGSOFT Distinguished Paper Award 🏆** at [MODELS 2026](https://conf.researchr.org/home/models-2026) in Málaga, Spain.
 {{< /callout >}}
 

@@ -1,7 +1,7 @@
 name: Deploy website to GitHub Pages
 
 env:
-  WC_HUGO_VERSION: "0.148.2"
+  WC_HUGO_VERSION: "0.166.0"
 
 on:
   # Trigger the workflow every time you push to the `main` branch
@@ -48,13 +48,11 @@ jobs:
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.mod') }}
           restore-keys: |
             ${{ runner.os }}-hugomod-
+      # Node is only needed to build the Blockly and Xtext examples
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: "24"
-          cache: "npm"
-      - name: Install TailwindCSS CLI
-        run: npm install
 
       # Execute the external build script for blockly
       - name: Build and copy Blockly examples
@@ -82,12 +80,6 @@ jobs:
         run: |
           echo "Hugo Cache Dir: $(hugo config | grep cachedir)"
           hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
-      # Not the slide decks: they would flood the site search
-      - name: Index with Pagefind
-        run: |
-          mv public/teaching/intro-java/slides "$RUNNER_TEMP/intro-java-slides"
-          npx pagefind --site public
-          mv "$RUNNER_TEMP/intro-java-slides" public/teaching/intro-java/slides
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

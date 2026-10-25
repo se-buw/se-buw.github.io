@@ -1,10 +1,5 @@
 ---
 title: Research
-show_date: false
-reading_time: false
-show_related: false
-share: false
-pager: false
 ---
 
 Our research is around the development of new methods that enable software engineers to more efficiently develop and maintain complex software systems. Our focus is on software modeling and specification languages. These languages introduce new concepts and abstractions to capture the complexity of software systems. Specifically, we am interested in developing the right tools and processes to leverage existing knowledge present in heterogeneous and evolving software models.
@@ -23,4 +18,4 @@ Most of our software is available on [GitHub](https://github.com/se-buw) and ope
     - [Redundancy](https://github.com/se-buw/alloy-redundancy)
     - [Semantic Comparison](https://github.com/se-buw/alloy-diff)
     - [Abstract Instances](https://github.com/jringert/alloy-absinst)
-- [Spectra Tools](https://github.com/SpectraSynthesizer/) and [Spectra Tutorial](/gse/tutorials/spectra/)
+- [Spectra Tools](https://github.com/SpectraSynthesizer/) and [Spectra Tutorial](/teaching/gse/tutorials/spectra/)

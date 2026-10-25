@@ -70,7 +70,7 @@ slides: ""
 
 > Soaibuzzaman, Jenny Döring, Srinivasulu Kasi, and Jan Oliver Ringert. 2026. On the Comparison of Learned Classifiers. In Software Engineering and Formal Methods (LNCS, Vol. 16192), Domenico Bianculli and Elena Gómez-Martínez (Eds.). Springer Nature Switzerland, Cham, 223–240. doi:10.1007/978-3-032-10444-1_14
 
-> [📥 PDF](./publication/mldiff-sefm-25/On-the-Comparison-of-Learned-Classifiers.pdf)
+> [📥 PDF](./On-the-Comparison-of-Learned-Classifiers.pdf)
 > 📚 DOI: [10.1007/978-3-032-10444-1_14](https://doi.org/10.1007/978-3-032-10444-1_14)
 
 #### **💻 SMT-based Implementation**
