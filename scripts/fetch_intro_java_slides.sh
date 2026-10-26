@@ -28,8 +28,8 @@ fi
 
 # Static files bypass Hugo's head, so add the site's Umami tag (from the analytics partial) to every page.
 # Not site_libs/: reveal's speaker view would count as a second visit.
-tag="$(cat layouts/partials/blox-analytics/index.html)"
-[ -n "$tag" ] || { echo "No analytics tag in layouts/partials/blox-analytics/index.html"; exit 1; }
+tag="$(cat layouts/_partials/custom/head-end.html)"
+[ -n "$tag" ] || { echo "No analytics tag in layouts/_partials/custom/head-end.html"; exit 1; }
 echo "-> Adding Umami analytics to the slides"
 find "$dest" -name '*.html' -not -path "$dest/site_libs/*" | while read -r f; do
   grep -qF 'analytics/script.js' "$f" || sed -i "s|</head>|$tag\n</head>|" "$f"
