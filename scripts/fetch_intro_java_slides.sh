@@ -28,11 +28,17 @@ fi
 
 # Static files bypass Hugo's head, so add the site's Umami tag (from the analytics partial) to every page.
 # Not site_libs/: reveal's speaker view would count as a second visit.
-tag="$(cat layouts/_partials/custom/head-end.html)"
-[ -n "$tag" ] || { echo "No analytics tag in layouts/_partials/custom/head-end.html"; exit 1; }
+# The partial is a Hugo template (if/end lines around the tag), so take only the <script> line.
+export TAG="$(grep -F '<script' layouts/_partials/custom/head-end.html)"
+[ -n "$TAG" ] || { echo "No analytics tag in layouts/_partials/custom/head-end.html"; exit 1; }
 echo "-> Adding Umami analytics to the slides"
 find "$dest" -name '*.html' -not -path "$dest/site_libs/*" | while read -r f; do
-  grep -qF 'analytics/script.js' "$f" || sed -i "s|</head>|$tag\n</head>|" "$f"
+  if ! grep -qF 'analytics/script.js' "$f"; then
+    # awk instead of sed: the tag is passed via the environment, so no escaping of its characters is needed
+    awk 'BEGIN { t = ENVIRON["TAG"] }
+      !done && (i = index($0, "</head>")) { print substr($0, 1, i - 1) t; print substr($0, i); done = 1; next }
+      { print }' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+  fi
 done
 
 echo "-> intro-java slides completed successfully."
