@@ -1,0 +1,22 @@
+{{- /* dblp-style publication entry: [c6]  Authors: Title. Venue
+                                                 PDF · BibTeX · DOI · ...
+  Group members (authors with a profile in content/authors/) are in bold. */ -}}
+{{- $key := partial "publication/key.html" . -}}
+{{- $venue := .Params.publication_short | default .Params.publication | default "" | markdownify | plainify | htmlUnescape | strings.TrimPrefix "In " -}}
+{{- $title := .Title -}}
+{{- if not (findRE `[.?!]$` $title) }}{{ $title = printf "%s." $title }}{{ end -}}
+<div class="se-pub" id="{{ .Slug | default .File.ContentBaseName }}">
+  <span class="se-pub-key" title="{{ $key.label }}">[{{ $key.key }}]</span>
+  <div class="se-pub-body">
+    {{- with .GetTerms "authors" -}}
+      <span class="se-pub-authors">
+        {{- range $i, $a := . -}}
+          {{- if $i }}, {{ end -}}
+          <a href="{{ $a.RelPermalink }}"{{ if $a.File }} class="se-pub-member"{{ end }}>{{ $a.LinkTitle }}</a>
+        {{- end -}}:</span>
+    {{ end -}}
+    <a class="se-pub-title" href="{{ .RelPermalink }}">{{ $title }}</a>
+    {{- with $venue }} <span class="se-pub-venue"{{ with $.Params.publication }} title="{{ . | markdownify | plainify }}"{{ end }}>{{ . }}</span>{{ end -}}
+    {{- partial "publication/links.html" (dict "page" .) -}}
+  </div>
+</div>

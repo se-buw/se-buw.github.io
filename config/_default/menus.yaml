@@ -1,32 +1,24 @@
 main:
   - name: Research
-    url: research
+    pageRef: /research
     weight: 10
   - name: Teaching
-    url: teaching
+    pageRef: /teaching
     weight: 20
   - name: Publications
-    url: publication
+    pageRef: /publication
     weight: 30
   - name: News
-    url: news
+    pageRef: /news
     weight: 40
   - name: Team
-    url: team
+    pageRef: /team
     weight: 50
-
-
-# sidebar:
-#   - identifier: more
-#     name: Still need help?
-#     params:
-#       type: separator
-#     weight: 1
-#   - identifier: community
-#     name: "Community"
-#     pageRef: "/community"
-#     weight: 2
-#   - identifier: hugoDocs
-#     name: "Hugo Docs ↗"
-#     url: "https://docs.hugoblox.com"
-#     weight: 3
+  - name: Search
+    weight: 60
+    params:
+      type: search
+  - name: Theme
+    weight: 70
+    params:
+      type: theme-toggle

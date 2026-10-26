@@ -1,7 +1,6 @@
 ---
 title: Introduction to Programming with Java
 weight: 5
-view: date-title-summary
 ---
 
 **This site presents the slides and example code of the course Introduction to Programming with Java at [Bauhaus University Weimar.](https://www.uni-weimar.de)**

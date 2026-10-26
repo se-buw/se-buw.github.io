@@ -1,7 +1,6 @@
 ---
 title: Software Engineering
 weight: 10
-view: date-title-summary
 ---
 
 **This site presents a collection of practice exams created for to the Software Engineering course at [Bauhaus University Weimar.](https://www.uni-weimar.de)**

@@ -1,20 +1,287 @@
-.hbb-section {
-  padding-top: .5rem;
-  padding-bottom: .5rem; 
+/* SE@BUW additions to the Hextra theme (loaded automatically by Hextra):
+   publication list + BibTeX dialog, and the sub-code shortcode.
+   Hextra switches dark mode with the `dark` class on <html>. */
+
+:root {
+  --se-text: #111827;
+  --se-muted: #6b7280;
+  --se-border: #e5e7eb;
+  --se-surface: #f9fafb;
+  --se-card: #ffffff;
+  --se-pub-underline: hsl(var(--primary-hue) 85% 50% / 0.5);
+  --se-pub-hover: hsl(var(--primary-hue) 90% 50% / 0.12);
 }
 
-.py-32 {
-  padding-block: 2rem !important;
+.dark {
+  --se-text: #f3f4f6;
+  --se-muted: #9ca3af;
+  --se-border: #2a2a2e;
+  --se-surface: #1c1c1f;
+  --se-card: #18181b;
+  --se-pub-underline: hsl(var(--primary-hue) 95% 65% / 0.55);
+  --se-pub-hover: hsl(var(--primary-hue) 95% 60% / 0.16);
 }
 
-.text-center {
-    text-align: left !important;
+/* ---------- Publications ---------- */
+
+/* Publications, dblp style: year rule, hanging [c6] key, one run of text */
+
+.se-pub-list {
+  display: flex;
+  flex-direction: column;
 }
 
-/* sub-code shortcode: tighten layout and improve highlighted-line contrast */
+.se-pub-year {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--se-muted);
+}
+
+.se-pub-year::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--se-border);
+}
+
+.se-pub-year:first-child {
+  margin-top: 0;
+}
+
+.se-pub {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 0.5rem;
+  padding: 0.55rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  scroll-margin-top: calc(var(--hextra-navbar-height) + 1rem);
+}
+
+.se-pub:target {
+  border-radius: 4px;
+  background: var(--se-pub-hover);
+}
+
+.se-pub-key {
+  padding-top: 0.15rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--se-muted);
+}
+
+.se-pub-body {
+  min-width: 0;
+}
+
+.se-pub-authors,
+.se-pub-authors a {
+  color: var(--se-muted);
+  text-decoration: none;
+}
+
+.se-pub-authors a:hover {
+  text-decoration: underline;
+}
+
+.se-pub-authors a.se-pub-member {
+  font-weight: 600;
+  color: var(--se-text);
+}
+
+.se-pub-title {
+  font-weight: 600;
+}
+
+.se-pub-venue {
+  font-style: italic;
+  color: var(--se-muted);
+}
+
+/* Text links (title, PDF · BibTeX · DOI ...): accent underline, highlight on hover */
+.se-pub-title,
+.se-pub-links a {
+  color: var(--se-text);
+  text-decoration: underline;
+  text-decoration-color: var(--se-pub-underline);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: background 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.se-pub-title:hover,
+.se-pub-links a:hover {
+  background: var(--se-pub-hover);
+  text-decoration-color: transparent;
+}
+
+.se-pub-links {
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+}
+
+/* The dot sits outside the link box so the hover fill and underline skip it */
+.se-pub-links a {
+  position: relative;
+}
+
+.se-pub-links a + a {
+  margin-left: 1.1em;
+}
+
+.se-pub-links a + a::before {
+  content: '·';
+  position: absolute;
+  left: -0.75em;
+  color: var(--se-muted);
+  pointer-events: none;
+}
+
+.se-pub-links-lg {
+  margin: 1rem 0 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* BibTeX dialog */
+
+.se-citation-dialog {
+  width: min(90vw, 40rem);
+  max-height: 82vh;
+  margin: auto;
+  border: 1px solid var(--se-border);
+  border-radius: 10px;
+  background: var(--se-card);
+  padding: 1.75rem;
+  color: var(--se-text);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.se-citation-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+}
+
+.se-citation-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.se-citation-head h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.se-citation-close {
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--se-muted);
+}
+
+.se-citation-close:hover {
+  color: var(--se-text);
+}
+
+.se-citation-dialog pre {
+  overflow-x: auto;
+  border: 1px solid var(--se-border);
+  border-radius: 6px;
+  background: var(--se-surface);
+  padding: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.se-citation-copy {
+  margin-top: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--se-border);
+  border-radius: 4px;
+  background: var(--se-pub-hover);
+  padding: 0.4rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--se-text);
+}
+
+/* ---------- Code ---------- */
+
+/* Fallback lexers (Xtext, Spectra, Dafny) emit many error tokens: don't paint them red */
+.chroma .err {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* sub-code shortcode */
+
+.hb-code-container {
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+}
+
 .hb-code-container .hb-code-source-header {
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid #374151;
+  background: #111827;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  color: #f3f4f6;
+}
+
+.hb-code-source-label {
+  font-weight: 600;
+}
+
+.hb-code-source-path {
+  overflow: hidden;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+a.hb-code-source-path {
+  text-decoration: underline;
+}
+
+a.hb-code-source-path:hover {
+  color: #e5e7eb;
+}
+
+.hb-code-source-lines {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #d1d5db;
+}
+
+.hb-code-copy-clean {
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.125rem 0.5rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.hb-code-copy-clean:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .hb-code-container .highlight,
@@ -22,22 +289,26 @@
 .hb-code-container .chroma {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  border-radius: 0 !important;
 }
 
-.hb-code-container .copy-button {
-  display: none !important;
+.hb-code-container pre {
+  overflow-x: auto;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .hb-code-container .chroma .hl,
 .hb-code-container .chroma .line.hl {
+  display: block;
   background-color: rgba(56, 189, 248, 0.22) !important;
   color: inherit !important;
 }
 
 .dark .hb-code-container .chroma .hl,
 .dark .hb-code-container .chroma .line.hl {
-  background-color: rgba(56, 189, 248, 0.30) !important;
-  color: inherit !important;
+  background-color: rgba(56, 189, 248, 0.3) !important;
 }
 
 /* Spectra: keep base code-block styling, customize only syntax colors. */
@@ -127,25 +398,9 @@
   color: #c4b5fd !important;
 }
 
-/* Make inline code visually distinct without changing fenced code blocks. */
-.content :not(pre) > code,
-.prose :not(pre) > code {
-  border-radius: 0.25rem;
-  background-color: rgba(148, 163, 184, 0.16);
-  padding: 0.12rem 0.35rem;
-  font-family: var(--font-mono, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace);
-  font-size: 0.9em;
-  color: inherit;
-}
+/* ---------- Homepage ---------- */
 
-.content :not(pre) > code::before,
-.content :not(pre) > code::after,
-.prose :not(pre) > code::before,
-.prose :not(pre) > code::after {
-  content: none;
-}
-
-.dark .content :not(pre) > code,
-.dark .prose :not(pre) > code {
-  background-color: rgba(148, 163, 184, 0.22);
+/* Hextra's home layout has no space under the page title; match the other pages */
+main#content > h1 + .content {
+  margin-top: 2.5rem;
 }

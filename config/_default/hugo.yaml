@@ -1,5 +1,5 @@
 # Configuration of Hugo
-# Guide: https://docs.hugoblox.com/tutorial/
+# Theme: Hextra (https://imfing.github.io/hextra/docs/)
 # Hugo Documentation: https://gohugo.io/getting-started/configuration/#all-configuration-settings
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
@@ -7,36 +7,23 @@ title: "SE@BUW"
 baseURL: 'https://se-buw.de/'
 
 ############################
-## PAGE OPTIONS  
+## PAGE OPTIONS
 ############################
 
 cascade:
-  # Generative Software Engineering folder options
-  - _target:
-      path: /teaching/gse/**
-    editable: false
-    show_breadcrumb: true
-    # Hide date from Next In Series
-    show_date: false
-    # Show date modified at end of content
-    show_date_updated: true
-  # News post options
-  - _target:
-      path: /news/**
+  # Generative Software Engineering tutorials: Hextra docs layout (sidebar, TOC, prev/next)
+  - target:
+      path: '{/teaching/gse,/teaching/gse/**}'
+    type: docs
+  # News: Hextra blog layout
+  - target:
+      path: '{/news,/news/**}'
+    type: blog
+  # Publication pages: Hextra blog layout (the publication list has its own layout)
+  - target:
+      path: /publication/**
       kind: page
-    pager: true
-    editable: false
-    hide_date: false
-    show_date_updated: true
-    reading_time: true
-    commentable: true
-    show_related: true
-    share: true
-    # Just use Breadcrumb for navigation on blog post pages?
-    show_breadcrumb: false
-    header:
-      navbar:
-        enable: true
+    type: blog
 
 ############################
 ## LANGUAGE
@@ -51,8 +38,6 @@ removePathAccents: true
 ## ADVANCED
 ############################
 
-build:
-  writeStats: true
 enableGitInfo: false
 summaryLength: 30
 pagination:
@@ -68,21 +53,45 @@ permalinks:
   categories: '/category/:slug/'
 disableAliases: true
 outputs:
-  home: [HTML, RSS, WebAppManifest, headers, redirects, backlinks]
+  home: [HTML, RSS]
   page: [HTML]
   section: [HTML, RSS]
 imaging:
   resampleFilter: Lanczos
-  quality: 90
   anchor: Smart
-  hint: picture
+  jpeg:
+    quality: 90
+  webp:
+    quality: 90
 timeout: "600s"
 taxonomies:
   tag: tags
   category: categories
   author: authors
 markup:
-  _merge: deep
+  goldmark:
+    renderer:
+      # Render HTML in Markdown
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+        title: true
+    extensions:
+      extras:
+        # Enable subscript, superscript, and highlighting with ~,^, and == wrappers
+        mark:
+          enable: true
+        subscript:
+          enable: true
+        superscript:
+          enable: true
+  highlight:
+    noClasses: false
+    guessSyntax: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
 related:
   threshold: 80
   includeNewer: true
@@ -93,10 +102,5 @@ related:
     - name: categories
       weight: 70
 security:
-  _merge: deep
   exec:
-    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^node$', '^npx$', '^postcss$', '^tailwindcss$']
-sitemap:
-  _merge: deep
-minify:
-  _merge: deep
+    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^node$', '^npx$', '^postcss$']

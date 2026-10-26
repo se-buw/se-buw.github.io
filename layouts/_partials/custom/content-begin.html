@@ -1,0 +1,9 @@
+{{- /* Hextra hook, top of the page content. On a publication page: venue, links (PDF · BibTeX · DOI ...) and abstract. */ -}}
+{{- if and .IsPage (eq .Section "publication") -}}
+  {{- with .Params.publication }}<p><em>{{ . | markdownify }}</em></p>{{ end -}}
+  {{- partial "publication/links.html" (dict "page" . "class" "se-pub-links-lg") -}}
+  {{- with .Params.abstract -}}
+    <h2>Abstract</h2>
+    {{ . | $.RenderString (dict "display" "block") }}
+  {{- end -}}
+{{- end -}}

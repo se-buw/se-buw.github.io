@@ -1,0 +1,21 @@
+{{- /* dblp-style key of a publication, e.g. [c6]: a letter for the type, numbered per type from the oldest.
+  Returns dict "key" "c6" "label" "Conference / workshop paper" */ -}}
+{{- $types := dict
+  "paper-conference" (slice "c" "Conference / workshop paper")
+  "article-journal" (slice "j" "Journal article")
+  "chapter" (slice "p" "Part in book or collection")
+  "book" (slice "b" "Book")
+  "thesis" (slice "b" "Thesis")
+  "dataset" (slice "d" "Data / artifact")
+  "software" (slice "d" "Data / artifact")
+-}}
+{{- $informal := slice "i" "Informal / other publication" -}}
+{{- $type := index $types (index (.Params.publication_types | default (slice "")) 0) | default $informal -}}
+{{- $letter := index $type 0 -}}
+{{- $n := 0 -}}
+{{- range (where site.RegularPages "Section" "publication").ByDate -}}
+  {{- $t := index $types (index (.Params.publication_types | default (slice "")) 0) | default $informal -}}
+  {{- if eq (index $t 0) $letter }}{{ $n = add $n 1 }}{{ end -}}
+  {{- if eq . $ }}{{ break }}{{ end -}}
+{{- end -}}
+{{- return dict "key" (printf "%s%d" $letter $n) "label" (index $type 1) -}}

@@ -1,0 +1,50 @@
+{{- /* Text links of a publication, separated by middle dots: PDF · BibTeX · DOI · Code · Dataset · ...
+  From front matter `links`, the DOI (hugoblox.ids.doi or doi) and cite.bib in the page bundle.
+  A relative url (e.g. ./publication/<slug>/paper.pdf) is relative to the site root.
+  Usage: partial "publication/links.html" (dict "page" . "class" "...") */ -}}
+{{- $page := .page -}}
+{{- $order := slice "pdf" "bibtex" "doi" "code" "dataset" "project" "slides" "video" "poster" "preprint" "source" -}}
+{{- $labels := dict "pdf" "PDF" "code" "Code" "dataset" "Dataset" "project" "Project" "slides" "Slides"
+  "video" "Video" "poster" "Poster" "preprint" "Preprint" -}}
+
+{{- $links := dict -}}
+{{- $extra := slice -}}
+{{- range $page.Params.links -}}
+  {{- $type := lower (.type | default "link") -}}
+  {{- $url := .url | default "" -}}
+  {{- if not (or (hasPrefix $url "http") (hasPrefix $url "/") (hasPrefix $url "mailto:")) -}}
+    {{- $url = strings.TrimPrefix "./" $url | relURL -}}
+  {{- end -}}
+  {{- $name := .name | default (index $labels $type) -}}
+  {{- if and (eq $type "source") (not .name) -}}
+    {{- $name = cond (strings.Contains $url "arxiv.org") "arXiv" "Publisher" -}}
+  {{- end -}}
+  {{- $item := dict "name" ($name | default (humanize $type)) "url" $url -}}
+  {{- if and $url (in $order $type) (not (index $links $type)) -}}
+    {{- $links = merge $links (dict $type $item) -}}
+  {{- else if $url -}}
+    {{- $extra = $extra | append $item -}}
+  {{- end -}}
+{{- end -}}
+{{- with or $page.Params.hugoblox.ids.doi $page.Params.doi -}}
+  {{- $links = merge $links (dict "doi" (dict "name" "DOI" "url" (printf "https://doi.org/%s" .))) -}}
+{{- end -}}
+{{- with $page.Resources.GetMatch "cite.bib" -}}
+  {{- $links = merge $links (dict "bibtex" (dict "name" "BibTeX" "url" .RelPermalink "bibtex" (strings.TrimSpace .Content))) -}}
+{{- end -}}
+
+{{- $items := slice -}}
+{{- range $order }}{{ with index $links . }}{{ $items = $items | append . }}{{ end }}{{ end -}}
+{{- $items = $items | append $extra -}}
+
+{{- with $items -}}
+  <div class="se-pub-links not-prose {{ $.class }}">
+    {{- range . -}}
+      {{- if .bibtex -}}
+        <a href="{{ .url }}" class="se-bibtex" data-bibtex="{{ .bibtex }}" data-title="{{ $page.Title }}">BibTeX</a>
+      {{- else -}}
+        <a href="{{ .url | safeURL }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>{{ .name }}</a>
+      {{- end -}}
+    {{- end -}}
+  </div>
+{{- end -}}

@@ -7,7 +7,7 @@ weight: 10
 
 This tutorial describes the Spectra language and tools for reactive synthesis. 
 
-{{% callout warning %}}
+{{% callout type="warning" %}}
 This tutorial has been tested with **Eclipse DSL Tools 2026-03**. Some screen captures in the videos might be from older versions of Eclipse.
 {{% /callout %}}
 

@@ -1,7 +1,6 @@
 ---
 title: Generative Software Engineering
 weight: 10
-view: date-title-summary
 ---
 
 **This site presents a collection of tutorials created for to the Generative Software Engineering (GSE) course at the [Bauhaus University Weimar.](https://www.uni-weimar.de)**

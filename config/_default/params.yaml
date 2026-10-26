@@ -1,83 +1,66 @@
 # SITE SETUP
-# Guide: https://docs.hugoblox.com/tutorial/
-# Documentation: https://docs.hugoblox.com/
+# Theme documentation: https://imfing.github.io/hextra/docs/guide/configuration/
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
-# Appearance
-appearance:
-  mode: dark
-  color: blue
-
-# SEO
-marketing:
-  seo:
-    site_type: Project
-    local_business_type: ''
-    org_name: ''
-    description: 'A highly-customizable Hugo documentation theme powered by Hugo Blox website builder.'
-    twitter: 'GetResearchDev'
-  analytics:
-    google_analytics: ''
-    google_tag_manager: ''
-    microsoft_clarity: ''
-    baidu_tongji: ''
-    plausible: ''
-    fathom: ''
-    pirsch: ''
-    custom_analytics: true
-  verification:
-    google: ''
-    baidu: ''
-  powered_by: false
+description: 'Software Engineering Chair at Bauhaus-Universität Weimar: model-based software development, formal methods and reactive synthesis.'
 
 # Site header
-header:
-  navbar:
-    enable: true
-    block: "navbar"
-    align: "right"
-    fixed_to_top: true
-    logo:
-      text: "SE@BUW"
-      filename: "icon.png"
-    show_search: true
-    show_theme_chooser: true
+navbar:
+  displayTitle: true
+  displayLogo: true
+  logo:
+    path: images/icon.png
+    width: 32
+    height: 32
+  width: full
 
-# Site footer
+# Light / dark mode: light | dark | system
+theme:
+  default: dark
+  # The toggle is in the navbar menu (see menus.yaml)
+  displayToggle: false
+
+# Site footer: the copyright notice is in layouts/_partials/custom/footer.html
 footer:
-  copyright:
-    notice: '© {year} Software Engineering @ Bauhaus-Universität Weimar. All rights reserved.'
-    license:
-      enable: false
-      allow_derivatives: false
-      share_alike: true
-      allow_commercial: false
-  powered_by: false
-  show_powered_by: false
+  enable: true
+  displayCopyright: false
+  displayPoweredBy: false
+  width: full
+copyright: '© {year} Software Engineering @ Bauhaus-Universität Weimar. All rights reserved.'
 
-# Localization
-locale:
-  date_format: 'Jan 2, 2006'
-  time_format: '3:04 PM'
+page:
+  width: wide
 
-# Site features
-features:
-  math:
-    enable: false
-  privacy_pack:
-    enable: false
-  repository:
-    url: 'https://github.com/se-buw/se-buw.github.io/'
-    content_dir: 'starters/documentation/content'
-    branch: 'main'
-  feedback:
-    responses:
-      positive: 'Glad to hear it! [Any ideas for improvements?](https://github.com/<USERNAME>/<REPO>/issues/new).'
-      negative: 'Sorry to hear that. [Please tell us how we can improve](https://github.com/<USERNAME>/<REPO>/issues/new).'
-  comment:
-    provider: ''
-    giscus:
-      repo: ''
-      repo_id: ''
-      category: ''
-      category_id: ''
+dateFormat: 'Jan 2, 2006'
+displayUpdatedDate: true
+
+# Search (built into the theme, indexes the Hugo pages but not the static slide decks)
+search:
+  enable: true
+  type: flexsearch
+  flexsearch:
+    index: content
+    tokenize: forward
+
+highlight:
+  copy:
+    enable: true
+    display: hover
+
+imageZoom:
+  enable: true
+
+externalLinkDecoration: false
+
+blog:
+  list:
+    displayTags: true
+    sortBy: date
+    sortOrder: desc
+  article:
+    displayPagination: true
+
+# Source repository, used by the sub-code shortcode for links to source files
+repository:
+  url: 'https://github.com/se-buw/se-buw.github.io/'
+  branch: 'main'

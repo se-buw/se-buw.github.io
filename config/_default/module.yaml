@@ -1,28 +1,11 @@
 ############################
 ## HUGO MODULES
-## Install or uninstall themes and plugins here.
 ## Docs: https://gohugo.io/hugo-modules/
 ############################
 
+hugoVersion:
+  extended: true
+  min: "0.146.0"
+
 imports:
-  - path: github.com/fm4se/website-theme/modules/blox-plugin-netlify
-    version: v0.7.0
-  - path: github.com/fm4se/website-theme/modules/blox-tailwind
-    version: v0.7.0
-
-
-# Install any Hugo Blox within the `hugo-blox/blox/` folder
-mounts:
-  - source: hugo-blox/blox/community
-    target: layouts/_partials/blox/community/
-    includeFiles: '**.html'
-  - source: hugo-blox/blox/all-access
-    target: layouts/_partials/blox/
-    includeFiles: '**.html'
-  - source: hugo-blox/blox
-    target: assets/dist/community/blox/
-    includeFiles: '**.css'
-  - source: layouts
-    target: layouts
-  - source: assets
-    target: assets
+  - path: github.com/imfing/hextra
